@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+
+<body>
+
+
+    <p id="demo"></p>
+
+
+
+    <script type="text/javascript">
+
+    
+        let text_file = readTextFile("sample.kml")
+        // console.log(demo_data)
+
+
+        parser = new DOMParser();
+        xmlDoc = parser.parseFromString(demo_data, "text/xml");
+
+        let number_of_lines = xmlDoc.getElementsByTagName("Document")[0].getElementsByTagName("Folder").length;
+
+        // console.log(xmlDoc.getElementsByTagName("Document")[0].getElementsByTagName("Folder")[1])
+
+        let lines_data = [];
+        
+        for (let i = 0; i < number_of_lines; i++) { // Seperate into multi-dementional array of points defining each line 
+            let item = xmlDoc.getElementsByTagName("Document")[0].getElementsByTagName("Folder")[i];
+            // console.log(item)
+            // console.log(item.getElementsByTagName("name")[0].textContent)  
+            let run_name = item.getElementsByTagName("name")[0].textContent
+            // lines_data.push(item.getElementsByTagName("name")[0].textContent); // Add line name to array
+
+            let placemark_data = item.getElementsByTagName("Placemark")[0];
+            // console.log(placemark_data)
+            
+            let line_string = placemark_data.getElementsByTagName("LineString")[0];
+            // console.log(line_string)
+
+            let coords = line_string.getElementsByTagName("coordinates")[0].textContent;
+            // console.log(coords)
+            // lines_data[i][0] = coords.textContent;
+            
+            coords = coords.trim();
+            let line_ends = coords.split(" ");
+           
+            lines_data.push([run_name, line_ends[0], line_ends[1]])
+            // console.log(line_ends)
+
+        }
+
+        console.log(lines_data)
+
+
+
+
+
+
+        function readTextFile(file) {
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", file, false);
+            rawFile.onreadystatechange = function () {
+                if (rawFile.readyState === 4) {
+                    if (rawFile.status === 200 || rawFile.status == 0) {
+                        var allText = rawFile.responseText;
+                        // alert(allText);
+                        demo_data = allText;
+                    }
+                }
+            }
+            rawFile.send(null);
+        }
+
+    </script>
+</body>
+
+</html>
