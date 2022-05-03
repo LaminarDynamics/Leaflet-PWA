@@ -33,7 +33,18 @@
             // var d = document.getElementById('start_line');
             // d.setAttribute("y1", 100)
             // d.setAttribute("y2", 100)
+            
+            var newLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            newLine.setAttribute('id', 'line2');
+            newLine.setAttribute('x1', '0');
+            newLine.setAttribute('y1', '0');
+            newLine.setAttribute('x2', '300');
+            newLine.setAttribute('y2', '300');
+            newLine.setAttribute('fill', 'orange');
+            newLine.setAttribute('stroke-width', '45');
 
+
+            $("#cdi_area").append(newLine);
 
         }
 

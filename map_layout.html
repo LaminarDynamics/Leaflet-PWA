@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+
+    <link rel="stylesheet" href="map_layout.css">
+
+
+    <style type="text/css">
+
+    </style>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+
+    <!-- Leaflet CSS LOCAL  -->
+    <!-- <link rel="stylesheet" href="leaflet_css.css"> -->
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+    <!-- Leaflet JS LOCAL -->
+    <!-- <script src="leaflet.min.js"></script> -->
+
+    <!-- <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script> Omnivore for plotting .kml -->
+    <script src='omnivore.min.js'></script> <!-- Omnivore for plotting .kml LOCAL -->
+    <script src='scalebar.js'></script> <!-- Scalebar -->
+    <script src='kml_process.js'></script> <!-- Data cruching for .kml-->
+    <script src='nav_functions.js'></script> <!-- Navigations Computes-->
+    <script src="jq.min.js"></script>
+    <script src="map_layout.js" defer></script>
+    <script src="draw_cdi.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="map_area">
+            <div id="map">
+                <button class="locate_btn">➤</button>
+                <button class="stop_btn">OFF</button>
+
+
+
+            </div>
+        </div>
+
+
+        <div class="lower_area">
+            <div class="extra_left"></div>
+            <div class="extra_right"></div>
+
+            <div class="display_area">
+                <div class="airspeed_area"></div>
+                <div class="altitude_area"></div>
+                <div class="heading_area"></div>
+                <div class="distance_area"></div>
+                <div class="cdi_display">
+                    <svg id="cdi_area" height="100%" width="100%" style="background-color: black; ">
+                        <circle id="center_circle" cx="250" cy="250" r="30" fill="none"
+                            style="stroke:#F7DDD4; stroke-width:5; opacity: 100%;" />
+                        <line id="glidepath" x1="0" y1="250" x2="500" y2="250"
+                            style="stroke:#1258DC; stroke-width:15" />
+                        <line id="localizer" x1="250" y1="0" x2="250" y2="500"
+                            style="stroke:#FD4D0C; stroke-width:15" />
+
+
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+
+    </script>
+</body>
+
+</html>

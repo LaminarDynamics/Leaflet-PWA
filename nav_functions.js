@@ -18,19 +18,20 @@ function GetClosestLine(current_pos, kml_lines) {
 
         let x_track = GetXTrack([current_pos.lat, current_pos.lon], line.bearing, line.point_a, line.point_b);
 
+        line.x_track = x_track;
+
 
         if (x_track < 0) { // Remove negatives for easier compairison
             x_track = x_track * -1;
         }
         x_tracks.push(x_track);
 
-        line.x_track = x_track;
         // line_object.bearing = a_b_bearing;
 
         // line_objects.push(line);
     });
 
-    // console.log("kml lines ", kml_lines)
+    console.log("kml lines ", kml_lines)
 
     // Get index of smallest value in array
     let min = Math.min(...x_tracks);    // Need to use ... to destructure array for compairison for some reason
