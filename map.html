@@ -236,14 +236,27 @@
         let tracking = false;
         let location_info = {};
 
-        kml_lines = KmlToArray("sample.kml");
-        
-        var heading = null;
+        kml_lines = KmlToArray("sample.kml"); // Returns array of kml_line objects
+        // console.log(kml_lines)
+
+        var heading = 90;
         let recip_hdg;
         let closetest_line;
 
-        [closetest_line, recip_hdg] = GetClosestLine(current_pos, heading, kml_lines)
-        // console.log(closetest_line)
+        if (heading != null) { // Only give closest line if have heading to compare with line heading
+            [closetest_line, recip_hdg] = GetClosestLine(current_pos, heading, kml_lines)
+            if (closetest_line == null) {
+                console.log("Heading not alligned with closest line")
+            }
+
+            else {
+                console.log("closesest ", closetest_line)
+            }
+        }
+
+        else {
+            console.log("No heading data")
+        }
 
 
 

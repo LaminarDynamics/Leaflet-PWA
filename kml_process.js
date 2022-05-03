@@ -2,7 +2,7 @@
 // 5-3-22
 
 function KmlToArray(file_path) {
-    let line_objects;
+    
     readTextFile(file_path)
 
     parser = new DOMParser();
@@ -25,7 +25,6 @@ function KmlToArray(file_path) {
         lines_data.push(SplitCoordinateData([run_name, line_ends[0], line_ends[1]]));
     }
 
-    console.log(lines_data)
 
     function readTextFile(file) {
         var rawFile = new XMLHttpRequest();
