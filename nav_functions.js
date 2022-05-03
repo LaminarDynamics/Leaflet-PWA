@@ -1,5 +1,5 @@
-function GetClosestLine(current_pos, heading, kml_lines) {
-
+function GetClosestLine(current_pos, kml_lines) {
+    
     let x_tracks = [];
 
     kml_lines.forEach(line => {
@@ -16,7 +16,7 @@ function GetClosestLine(current_pos, heading, kml_lines) {
 
         // bearings.push(a_b_bearing);
 
-        let x_track = GetXTrack(current_pos, line.bearing, line.point_a, line.point_b);
+        let x_track = GetXTrack([current_pos.lat, current_pos.lon], line.bearing, line.point_a, line.point_b);
 
 
         if (x_track < 0) { // Remove negatives for easier compairison
@@ -41,13 +41,13 @@ function GetClosestLine(current_pos, heading, kml_lines) {
     let active_line = kml_lines[index_of_smallest];
     // console.log("active ", active_line)
 
-    if (heading != null) { // Only give closest line if have heading to compare with line heading
+    if (current_pos.heading != null) { // Only give closest line if have heading to compare with line heading
         let tolerance = 45; // Check line bearing is withing x degress of heading
-        if (heading <= (active_line.bearing + tolerance) && heading >= (active_line.bearing - tolerance)) {     // Alligned with line
+        if (current_pos.heading <= (active_line.bearing + tolerance) && current_pos.heading >= (active_line.bearing - tolerance)) {     // Alligned with line
             return [active_line, false]; // False for normal bearing
         }
 
-        if (heading <= (active_line.bearing_recip + tolerance) && heading >= (active_line.bearing_recip - tolerance)) { // Alligned with recip of line
+        if (current_pos.heading <= (active_line.bearing_recip + tolerance) && current_pos.heading >= (active_line.bearing_recip - tolerance)) { // Alligned with recip of line
             return [active_line, true]; // True for recip bearing
         }
 

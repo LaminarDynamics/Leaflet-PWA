@@ -11,9 +11,16 @@
 
 <body>
 
-    <svg id="svg_area" height="500" width="500" style="background-color: black;">
+    <!-- <svg id="svg_area" height="500" width="500" style="background-color: black;">
         <line id="start_line" x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:5" />
         Sorry, your browser does not support inline SVG.
+    </svg> -->
+
+    <svg id="cdi_area" height="500" width="500" style="background-color: black; ">
+        <line id="localizer" x1="250" y1="0" x2="250" y2="500" style="stroke:#FD4D0C; stroke-width:15" />
+        <line id="glidepath" x1="0" y1="250" x2="500" y2="250" style="stroke:#1258DC; stroke-width:15" />
+        <circle cx="250" cy="250" r="30" fill="none" style="stroke:#F7DDD4; stroke-width:5; opacity: 100%;" />
+
     </svg>
 
     <button onclick="Do()">Click</button>
@@ -23,10 +30,11 @@
         function Do() {
             // var cdi = document.getElementById('svg_area');
             // cdi.setAttribute("height", 100)
+            // var d = document.getElementById('start_line');
+            // d.setAttribute("y1", 100)
+            // d.setAttribute("y2", 100)
 
-            var d = document.getElementById('start_line');
-            d.setAttribute("y1", 100)
-            d.setAttribute("y2", 100)
+
         }
 
     </script>

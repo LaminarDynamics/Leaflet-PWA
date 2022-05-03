@@ -23,7 +23,7 @@
         #map {
             position: fixed;
             width: 100%;
-            height: 83%;
+            height: 50%;
             top: 0px;
             left: 0px;
             /* margin: 0 auto; */
@@ -76,84 +76,18 @@
             color: black;
         }
 
-        .points {
-            position: absolute;
-            top: 50%;
-            left: 35%;
-            z-index: 500;
-            font-size: 20px;
-            font-weight: bolder;
-            height: 55px;
-            width: 55px;
-            margin-right: 15px;
-            margin-top: 20px;
-            color: black;
-        }
+      .bottom_part {
+          position: fixed;
+          height: 50%;
+          bottom: 0;
+          left: 20%;
 
-        .distance_checkbox {
-            position: absolute;
-            top: 100%;
-            left: 40%;
-            font-size: 20px;
-            font-weight: bolder;
-            height: 25px;
-            width: 25px;
-            margin-top: 20px;
-            margin-left: 75px;
-            color: white;
-        }
+          background-color: aliceblue;
+      }
 
-        .points_adding {
-            position: absolute;
-            top: 0;
-            right: 0;
-            z-index: 500;
-            font-size: 20px;
-            font-weight: bolder;
-            height: 55px;
-            width: 55px;
-            margin-right: 15px;
-            margin-top: 20px;
-            color: blue;
-        }
+        
 
-        #bland {
-            position: absolute;
-
-            z-index: 500;
-            font-size: 20px;
-            font-weight: bolder;
-            height: 55px;
-            width: 55px;
-        }
-
-        /* Table Stuff ////////////////////////////////////  */
-        .table_data {
-            margin: 0;
-            position: absolute;
-            text-align: center;
-            color: white;
-            font-size: 20px;
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            background-color: black;
-            display: none;
-
-        }
-
-        td,
-        th {
-
-            border: 1px solid #dddddd;
-            text-align: center;
-            padding: 8px;
-            width: 98%;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-            color: black;
-        }
+      
     </style>
 
     <!-- Leaflet CSS -->
@@ -217,8 +151,13 @@
         </div>
     </div>
 
-    <div class="table_data">
-
+    <div class="bottom_part">
+        <!-- <svg id="cdi_area" height="500" width="500" style="background-color: black; ">
+            <line id="localizer" x1="250" y1="0" x2="250" y2="500" style="stroke:#FD4D0C; stroke-width:15" />
+            <line id="glidepath" x1="0" y1="250" x2="500" y2="250" style="stroke:#1258DC; stroke-width:15" />
+            <circle cx="250" cy="250" r="30" fill="none" style="stroke:#F7DDD4; stroke-width:5; opacity: 100%;" />
+    
+        </svg> -->
 
     </div>
 
@@ -231,7 +170,16 @@
 
         // console.log(GetBearing([68.619322, -149.451235], [70.138045, -156.329764]))
 
-        var current_pos = [38.25, -109.41];
+        // var current_pos = [38.25, -109.41];
+        //////////// SIMULATE LOCATION STUFF
+        current_pos = {
+            lat: 38.25,
+            lon: -109.41,
+            speed: 15,
+            altitude: 1500,
+            heading: 90,
+            accuracy: 15
+        }
 
         let tracking = false;
         let location_info = {};
@@ -239,12 +187,12 @@
         kml_lines = KmlToArray("sample.kml"); // Returns array of kml_line objects
         // console.log(kml_lines)
 
-        var heading = 90;
+       
         let recip_hdg;
         let closetest_line;
 
-        if (heading != null) { // Only give closest line if have heading to compare with line heading
-            [closetest_line, recip_hdg] = GetClosestLine(current_pos, heading, kml_lines)
+        if (current_pos.heading != null) { // Only give closest line if have heading to compare with line heading
+            [closetest_line, recip_hdg] = GetClosestLine(current_pos, kml_lines)
             if (closetest_line == null) {
                 console.log("Heading not alligned with closest line")
             }
@@ -348,6 +296,8 @@
 
 
 
+
+
                 // console.log('Your current position is:');
                 // console.log(`Latitude : ${crd.latitude}`);
                 // console.log(`Longitude: ${crd.longitude}`);
@@ -370,7 +320,9 @@
                     lat: crd.latitude,
                     lon: crd.longitude,
                     speed: crd.speed,
-                    heading: crd.heading
+                    altitude: crd.altitude,
+                    heading: crd.heading,
+                    accuracy: crd.accuracy
                 }
 
             }
