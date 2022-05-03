@@ -1,0 +1,35 @@
+<!-- 5-3-22 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDI</title>
+</head>
+
+<body>
+
+    <svg id="svg_area" height="500" width="500" style="background-color: black;">
+        <line id="start_line" x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:5" />
+        Sorry, your browser does not support inline SVG.
+    </svg>
+
+    <button onclick="Do()">Click</button>
+
+    <script type="text/javascript">
+
+        function Do() {
+            // var cdi = document.getElementById('svg_area');
+            // cdi.setAttribute("height", 100)
+
+            var d = document.getElementById('start_line');
+            d.setAttribute("y1", 100)
+            d.setAttribute("y2", 100)
+        }
+
+    </script>
+</body>
+
+</html>
