@@ -56,6 +56,7 @@ function SplitCoordinateData(line) {
     line_object.lon2 = line[2].split(",")[0];
 
     line_object.altitude = line[1].split(",")[2];
+    line_object.altitude_feet = line_object.altitude * 3.281;
 
     line_object.point_a = [line_object.lat1, line_object.lon1];
     line_object.point_b = [line_object.lat2, line_object.lon2];

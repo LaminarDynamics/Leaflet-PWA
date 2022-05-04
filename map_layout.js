@@ -23,11 +23,13 @@ current_pos = {
     lat: 38.25,
     lon: -109.412,
     speed: 15,
-    altitude: 1500,
+    altitude: 2817,
+    altitude_feet: 9100,
     heading: 190,
     accuracy: 15
 }
-let scaling = 1;
+let horz_scaling = .25;   // Meters total cdi width
+let vert_scaling = 100; // Feet total cdi height
 
 kml_lines = KmlToArray("sample.kml"); // Returns array of kml_line objects
 // console.log(kml_lines)
@@ -39,37 +41,74 @@ let recip_hdg;
 let closetest_line;
 let tracking_line = false;
 
-if (current_pos.heading != null) { // Only give closest line if have heading to compare with line heading
-    [closetest_line, recip_hdg] = GetClosestLine(current_pos, kml_lines)
-    if (closetest_line == null) {
-        console.log("Heading not alligned with closest line")
+function GetX_TrackData() {
+    if (current_pos.heading != null) { // Only give closest line if have heading to compare with line heading
+        [closetest_line, recip_hdg] = GetClosestLine(current_pos, kml_lines)
+        if (closetest_line == null) {
+            console.log("Heading not alligned with closest line")
+            tracking_line = false;
+        }
+
+        else {
+            console.log("closesest ", closetest_line)
+            tracking_line = true;
+            current_pos.x_track = closetest_line.x_track;
+            current_pos.altitude_dif_feet = current_pos.altitude_feet - closetest_line.altitude_feet;
+        }
     }
 
     else {
-        console.log("closesest ", closetest_line)
-        tracking_line = true;
-        current_pos.x_track = closetest_line.x_track;
+        console.log("No heading data")
+        tracking_line = false;
     }
 }
 
-else {
-    console.log("No heading data")
+
+
+
+setInterval(TrackPos, 10);
+//////////////////////////////////  FAKE POSITION THING //////////////////////
+function FakePos() {
+
+    current_pos = {
+        lat: current_pos.lat,
+        lon: current_pos.lon,
+        speed: 15,
+        altitude: 2817,
+        altitude_feet: current_pos.altitude * 3.281,
+        heading: 190,
+        accuracy: 15
+    }
+
+    current_pos.lat = current_pos.lat - 0.000001;
+    current_pos.lon = current_pos.lon + 0.00001;
+    // console.log("Pos = ", current_pos.lat)
+
 }
 
-
-setInterval(TrackPos, 1000);
 function TrackPos() {
     if (tracking) {
-        console.log("track")
-        console.log("Speed = " + current_pos.speed);
-        GetLocation();
+        // console.log("track")
+        // console.log("Speed = " + current_pos.speed);
+        // GetLocation(); ///////////////////////////////////////////////////// FAKE POS
+        FakePos();
         map.panTo(new L.LatLng(current_pos.lat, current_pos.lon));
         // map.setZoom(15)
-        user_pos.setLatLng([current_pos.lat, current_pos.lon])
+        // user_pos.setLatLng([current_pos.lat, current_pos.lon])   // Marker thing
+
+        L.circle([current_pos.lat, current_pos.lon], {  // Dot marker
+            color: 'blue',
+            fillColor: '#f03',
+            fillOpacity: 0.1,
+            radius: 25
+        }).addTo(map);
+
+        GetX_TrackData();
     }
 
     if (tracking_line) {
-        DrawActiveCdi(current_pos, scaling)
+        GetX_TrackData();
+        DrawActiveCdi(current_pos, horz_scaling, vert_scaling)
     }
 }
 
@@ -136,6 +175,7 @@ function GetLocation() {
             lon: crd.longitude,
             speed: crd.speed,
             altitude: crd.altitude,
+            altitude_feet: crd.altitude * 3.281,
             heading: crd.heading,
             accuracy: crd.accuracy
         }
