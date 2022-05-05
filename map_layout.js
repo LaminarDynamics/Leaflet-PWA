@@ -20,15 +20,15 @@ var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}
 let tracking = false;
 let current_pos = {};
 // DEBUG
-current_pos = {
-    lat: 40.22,
-    lon: -112.44,
-    speed: 15,
-    altitude: 2481,
-    altitude_feet: 8100,
-    heading: 0,
-    accuracy: 15
-}
+// current_pos = {
+//     lat: 40.22,
+//     lon: -112.44,
+//     speed: 15,
+//     altitude: 2481,
+//     altitude_feet: 8100,
+//     heading: 0,
+//     accuracy: 15
+// }
 let horz_scaling = .25;   // Meters total cdi width
 let vert_scaling = 100; // Feet total cdi height
 
