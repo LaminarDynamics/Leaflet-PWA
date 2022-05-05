@@ -31,7 +31,7 @@ function GetClosestLine(current_pos, kml_lines) {
         // line_objects.push(line);
     });
 
-    console.log("kml lines ", kml_lines)
+    // console.log("kml lines ", kml_lines)
 
     // Get index of smallest value in array
     let min = Math.min(...x_tracks);    // Need to use ... to destructure array for compairison for some reason

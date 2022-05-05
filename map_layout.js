@@ -21,12 +21,12 @@ let tracking = false;
 let current_pos = {};
 // DEBUG
 current_pos = {
-    lat: 38.25,
-    lon: -109.412,
+    lat: 40.22,
+    lon: -112.44,
     speed: 15,
-    altitude: 2817,
-    altitude_feet: 9100,
-    heading: 190,
+    altitude: 2481,
+    altitude_feet: 8100,
+    heading: 0,
     accuracy: 15
 }
 let horz_scaling = .25;   // Meters total cdi width
@@ -68,6 +68,7 @@ function GetX_TrackData() {
             tracking_line = true;
             current_pos.x_track = closetest_line.x_track;
             current_pos.altitude_dif_feet = current_pos.altitude_feet - closetest_line.altitude_feet;
+            console.log(current_pos)
         }
     }
 
@@ -88,14 +89,15 @@ function FakePos() {
         lat: current_pos.lat,
         lon: current_pos.lon,
         speed: 15,
-        altitude: 2817,
+        altitude: current_pos.altitude,
         altitude_feet: current_pos.altitude * 3.281,
         heading: 190,
         accuracy: 15
     }
 
     current_pos.lat = current_pos.lat - 0.000001;
-    current_pos.lon = current_pos.lon + 0.00001;
+    // current_pos.heading = current_pos.heading + 1
+    // current_pos.lon = current_pos.lon + 0.00001;
     // console.log("Pos = ", current_pos.lat)
 
 }
@@ -104,8 +106,8 @@ function TrackPos() {
     if (tracking) {
         // console.log("track")
         // console.log("Speed = " + current_pos.speed);
-        // GetLocation(); ///////////////////////////////////////////////////// FAKE POS
-        FakePos();
+        GetLocation(); ///////////////////////////////////////////////////// FAKE POS
+        // FakePos();
         map.panTo(new L.LatLng(current_pos.lat, current_pos.lon));
         // map.setZoom(15)
         // user_pos.setLatLng([current_pos.lat, current_pos.lon])   // Marker thing
