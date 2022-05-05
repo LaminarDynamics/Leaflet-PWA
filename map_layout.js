@@ -11,8 +11,9 @@ var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}
     zoomOffset: -1
 }).addTo(map);
 
-omnivore.kml('sample.kml').addTo(map);
-L.edgeScaleBar().addTo(map);
+
+
+
 
 
 
@@ -31,7 +32,20 @@ current_pos = {
 let horz_scaling = .25;   // Meters total cdi width
 let vert_scaling = 100; // Feet total cdi height
 
-kml_lines = KmlToArray("sample.kml"); // Returns array of kml_line objects
+// Array of .kmls
+let file_paths = ["sample.kml", "west.kml", "east.kml"];
+
+kml_lines = KmlToArray(file_paths); // Returns array of kml_line objects
+
+file_paths.forEach(kmls => {
+    omnivore.kml(kmls).addTo(map);
+    omnivore.kml(kmls).addTo(map);
+    omnivore.kml(kmls).addTo(map);
+});
+
+
+L.edgeScaleBar().addTo(map);
+
 // console.log(kml_lines)
 DrawIdleCdi();
 
