@@ -1,5 +1,5 @@
 function GetClosestLine(current_pos, kml_lines) {
-    
+
     let x_tracks = [];
 
     kml_lines.forEach(line => {
@@ -43,12 +43,46 @@ function GetClosestLine(current_pos, kml_lines) {
     // console.log("active ", active_line)
 
     if (current_pos.heading != null) { // Only give closest line if have heading to compare with line heading
+
         let tolerance = 45; // Check line bearing is withing x degress of heading
-        if (current_pos.heading <= (active_line.bearing + tolerance) && current_pos.heading >= (active_line.bearing - tolerance)) {     // Alligned with line
+
+        //
+        // Added +360 everywhere because it makes the comparison math much simpler
+        //
+
+        let tolerance_right = (active_line.bearing + 360) + tolerance;
+        let tolerance_left = (active_line.bearing + 360) - tolerance;
+        let recip_tolerance_right = (active_line.bearing_recip + 360) + tolerance;
+        let recip_tolerance_left = (active_line.bearing_recip + 360) - tolerance;
+
+
+        if (current_pos.heading + 360 <= tolerance_right) {     // Alligned with line
+            console.log("1")
+
             return [active_line, false]; // False for normal bearing
         }
 
-        if (current_pos.heading <= (active_line.bearing_recip + tolerance) && current_pos.heading >= (active_line.bearing_recip - tolerance)) { // Alligned with recip of line
+        if (current_pos.heading + 360 >= tolerance_left) {
+            console.log("2")
+            if (current_pos.heading > active_line.bearing_recip) {
+                console.log("2.1")
+                return [active_line, true];
+            }
+            if (current_pos.heading > active_line.bearing_recip && current_pos.heading > active_line.bearing) {
+                console.log("2.2")
+                return [active_line, false];
+            }
+            else {
+                return [active_line, false]; // False for normal bearing
+            }
+        }
+
+
+
+
+        if (current_pos.heading + 360 <= recip_tolerance_right && current_pos.heading + 360 >= recip_tolerance_left) { // Alligned with recip of line
+            console.log("3")
+
             return [active_line, true]; // True for recip bearing
         }
 

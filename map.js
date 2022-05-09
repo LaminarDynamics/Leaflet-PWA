@@ -25,7 +25,7 @@ current_pos = {
     speed: 15,
     altitude: 2481,
     altitude_feet: 8100,
-    heading: 0,
+    heading: 310,
     accuracy: 15
 }
 let horz_scaling = .25;   // Meters total cdi width
@@ -65,9 +65,14 @@ function GetX_TrackData() {
         }
 
         else {
-            console.log("closesest ", closetest_line)
+            // console.log("closesest ", closetest_line)
             tracking_line = true;
             current_pos.x_track = closetest_line.x_track;
+            console.log("recip = ", recip_hdg)  
+            if (recip_hdg == true) { // To reverse CDI in recip_hdg 
+                console.log("Reversing")
+                current_pos.x_track = current_pos.x_track * -1
+            }
             current_pos.altitude_dif_feet = current_pos.altitude_feet - closetest_line.altitude_feet;
             console.log(current_pos)
         }
@@ -92,13 +97,13 @@ function FakePos() {
         speed: 15,
         altitude: current_pos.altitude,
         altitude_feet: current_pos.altitude * 3.281,
-        heading: 165,
+        heading: current_pos.heading,
         accuracy: 15
     }
 
-    current_pos.lat = current_pos.lat - 0.00001;
+    current_pos.lat = current_pos.lat + 0.00001;
     // current_pos.heading = current_pos.heading + 1
-    current_pos.lon = current_pos.lon + 0.00001;
+    current_pos.lon = current_pos.lon - 0.00001;
     // console.log("Pos = ", current_pos.lat)
 
 }
