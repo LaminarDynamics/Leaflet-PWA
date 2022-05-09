@@ -1,7 +1,7 @@
 // 5-3-22
 
 var map = L.map('map').setView([39.8283, -98.5795], 3);
-var user_pos = L.marker([0, 0]).addTo(map);
+// var user_pos = L.marker([0, 0]).addTo(map);
 var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
     maxZoom: 18,
     // attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
@@ -16,19 +16,18 @@ var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}
 
 
 
-
 let tracking = false;
 let current_pos = {};
 // DEBUG
-// current_pos = {
-//     lat: 40.22,
-//     lon: -112.44,
-//     speed: 15,
-//     altitude: 2481,
-//     altitude_feet: 8100,
-//     heading: 0,
-//     accuracy: 15
-// }
+current_pos = {
+    lat: 40.22,
+    lon: -112.44,
+    speed: 15,
+    altitude: 2481,
+    altitude_feet: 8100,
+    heading: 0,
+    accuracy: 15
+}
 let horz_scaling = .25;   // Meters total cdi width
 let vert_scaling = 100; // Feet total cdi height
 
@@ -54,6 +53,8 @@ DrawIdleCdi();
 let recip_hdg;
 let closetest_line;
 let tracking_line = false;
+let breadcrumbs = true;
+
 
 function GetX_TrackData() {
     if (current_pos.heading != null) { // Only give closest line if have heading to compare with line heading
@@ -91,33 +92,45 @@ function FakePos() {
         speed: 15,
         altitude: current_pos.altitude,
         altitude_feet: current_pos.altitude * 3.281,
-        heading: 190,
+        heading: 165,
         accuracy: 15
     }
 
-    current_pos.lat = current_pos.lat - 0.000001;
+    current_pos.lat = current_pos.lat - 0.00001;
     // current_pos.heading = current_pos.heading + 1
-    // current_pos.lon = current_pos.lon + 0.00001;
+    current_pos.lon = current_pos.lon + 0.00001;
     // console.log("Pos = ", current_pos.lat)
 
 }
 
+let user_pos_marker = L.circle([current_pos.lat, current_pos.lon], {  // Dot marker
+    color: 'blue',
+    fillColor: '#f03',
+    fillOpacity: 0.1,
+    radius: 25
+}).addTo(map);
+
 function TrackPos() {
     if (tracking) {
+        // let user_pos_marker;
         // console.log("track")
         // console.log("Speed = " + current_pos.speed);
-        GetLocation(); ///////////////////////////////////////////////////// FAKE POS
-        // FakePos();
+        // GetLocation(); ///////////////////////////////////////////////////// FAKE POS
+        FakePos();
         map.panTo(new L.LatLng(current_pos.lat, current_pos.lon));
-        // map.setZoom(15)
-        // user_pos.setLatLng([current_pos.lat, current_pos.lon])   // Marker thing
+        // map.setZoom(15) // Map autozoom
 
-        L.circle([current_pos.lat, current_pos.lon], {  // Dot marker
-            color: 'blue',
-            fillColor: '#f03',
-            fillOpacity: 0.1,
-            radius: 25
-        }).addTo(map);
+        if (breadcrumbs == true) {
+            user_pos_marker = L.circle([current_pos.lat, current_pos.lon], {  // Dot marker
+                color: 'blue',
+                fillColor: '#f03',
+                fillOpacity: 0.1,
+                radius: 25
+            }).addTo(map);
+        }
+
+        user_pos_marker.setLatLng([current_pos.lat, current_pos.lon])   // Move marker thing after first position report
+
 
         GetX_TrackData();
     }
