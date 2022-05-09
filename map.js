@@ -174,7 +174,7 @@ function GetLocation() {
         // console.log(`Longitude: ${crd.longitude}`);
         // console.log(`More or less ${crd.accuracy} meters.`);
 
-        map.locate({ setView: true, maxZoom: 16 });
+        // map.locate({ setView: true, maxZoom: 16 });
 
         // var user_pos = L.marker([crd.latitude, crd.longitude]).addTo(map);
         // user_pos.bindPopup("You are within " + crd.accuracy.toFixed() + " meters from this point").openPopup();
