@@ -25,78 +25,80 @@ function GetClosestLine(current_pos, kml_lines) {
             x_track = x_track * -1;
         }
         x_tracks.push(x_track);
-
-        // line_object.bearing = a_b_bearing;
-
-        // line_objects.push(line);
     });
-
-    // console.log("kml lines ", kml_lines)
 
     // Get index of smallest value in array
     let min = Math.min(...x_tracks);    // Need to use ... to destructure array for compairison for some reason
     let index_of_smallest = x_tracks.indexOf(min);
-    // console.log("distance ", x_tracks)
-    // console.log("small ", smallest_index)
 
     let active_line = kml_lines[index_of_smallest];
-    // console.log("active ", active_line)
 
     if (current_pos.heading != null) { // Only give closest line if have heading to compare with line heading
 
         let tolerance = 45; // Check line bearing is withing x degress of heading
+        let recip = true;
 
-        //
-        // Added +360 everywhere because it makes the comparison math much simpler
-        //
-
-        let tolerance_right = (active_line.bearing + 360) + tolerance;
-        let tolerance_left = (active_line.bearing + 360) - tolerance;
-        let recip_tolerance_right = (active_line.bearing_recip + 360) + tolerance;
-        let recip_tolerance_left = (active_line.bearing_recip + 360) - tolerance;
-
-
-        if (current_pos.heading + 360 <= tolerance_right) {     // Alligned with line
-            console.log("1")
-
-            return [active_line, false]; // False for normal bearing
+        // Get difference between line and current heading
+        let current_to_line_hdg_dif;    // Difference between current heading and line bearing
+        if (current_pos.heading > active_line.bearing) {
+            current_to_line_hdg_dif = current_pos.heading - active_line.bearing;
+        }
+        else {
+            current_to_line_hdg_dif = active_line.bearing - current_pos.heading;
         }
 
-        if (current_pos.heading + 360 >= tolerance_left) {
-            console.log("2")
-            if (current_pos.heading > active_line.bearing_recip) {
-                console.log("2.1")
-                return [active_line, true];
-            }
-            if (current_pos.heading > active_line.bearing_recip && current_pos.heading > active_line.bearing) {
-                console.log("2.2")
-                return [active_line, false];
-            }
-            else {
-                return [active_line, false]; // False for normal bearing
-            }
+        if (current_to_line_hdg_dif > 180) { // Get recip if took long way around compass rose
+            current_to_line_hdg_dif -= 360;
+        }
+        // Fix Negative issues
+        if (current_to_line_hdg_dif < 0) {
+            current_to_line_hdg_dif = current_to_line_hdg_dif * -1
+            recip = false;
         }
 
 
 
-
-        if (current_pos.heading + 360 <= recip_tolerance_right && current_pos.heading + 360 >= recip_tolerance_left) { // Alligned with recip of line
-            console.log("3")
-
-            return [active_line, true]; // True for recip bearing
+        let current_to_line_recip_hdg_dif; // Difference between current heading and line_recip bearing
+        if (current_pos.heading > active_line.bearing_recip) {
+            current_to_line_recip_hdg_dif = current_pos.heading - active_line.bearing_recip;
+        }
+        else {
+            current_to_line_recip_hdg_dif = active_line.bearing_recip - current_pos.heading;
         }
 
-        else {  // Heading not alligned
+        if (current_to_line_recip_hdg_dif > 180) { // Get recip if took long way around compass rose
+            current_to_line_recip_hdg_dif -= 360;
+        }
+        // Fix Negative issues
+        if (current_to_line_recip_hdg_dif < 0) {
+            current_to_line_recip_hdg_dif = current_to_line_recip_hdg_dif * -1;
+            recip = true;
+        }
+
+
+
+        // Closer to normal heading
+        if (current_to_line_hdg_dif < current_to_line_recip_hdg_dif) {
+            if (current_to_line_hdg_dif < tolerance) {  // Within tolerance
+                return [active_line, recip]
+            }
+        }
+
+        // Closer to recip heading
+        if (current_to_line_recip_hdg_dif < current_to_line_hdg_dif) {
+            if (current_to_line_recip_hdg_dif < tolerance) {    // Within tolerance
+                return [active_line, recip]
+            }
+        }
+
+        if (current_to_line_hdg_dif > tolerance || current_to_line_recip_hdg_dif > tolerance) { // Outside tolerance
             return [null, null];
         }
+
+        else {  // Catch all in case nothing alligned 
+            return [null, null]
+        }
     }
-
-    else {
-        return null;
-    }
-
-
-
 }
 
 
