@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>utah_walk.kml</name>
+	<StyleMap id="inline">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline1</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Style id="inline0">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline1">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Placemark>
+		<name>Path Measure</name>
+		<styleUrl>#inline</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-111.8047488563274,40.63323114031487,0 -111.8047200034441,40.63284983368663,0 -111.8049161342838,40.63257070806708,0 -111.8053834538201,40.63236694017155,0 -111.8057476724813,40.63222049376629,0 -111.8064645872491,40.63218801700931,0 -111.8069135890203,40.63217936372035,0 -111.8070106465621,40.63232289191965,0 -111.8071836387575,40.63233578568396,0 -111.807693205792,40.63257935664631,0 -111.8079138447956,40.63296985985198,0 -111.808236773615,40.63297481506969,0 -111.8085334509607,40.63288409201468,0 -111.8090214493914,40.63308442745505,0 -111.8092954820917,40.63344847398608,0 -111.8096431711497,40.63361370581655,0 -111.8101849563151,40.63439253745304,0 -111.8106729384286,40.63476331217889,0 -111.8113039427597,40.63518577564849,0 -111.8115284693496,40.63543765735024,0 -111.8117433027097,40.63575263670742,0 -111.8118821921855,40.63621312099094,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+</Document>
+</kml>
