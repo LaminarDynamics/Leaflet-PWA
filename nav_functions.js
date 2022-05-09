@@ -35,7 +35,7 @@ function GetClosestLine(current_pos, kml_lines) {
 
     if (current_pos.heading != null) { // Only give closest line if have heading to compare with line heading
 
-        let tolerance = 45; // Check line bearing is withing x degress of heading
+        let tolerance = 89; // Check line bearing is withing x degress of heading
         let recip = true;
 
         // Get difference between line and current heading
