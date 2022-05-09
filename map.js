@@ -32,13 +32,11 @@ let horz_scaling = .25;   // Meters total cdi width
 let vert_scaling = 100; // Feet total cdi height
 
 // Array of .kmls
-let file_paths = ["sample.kml", "west.kml", "east.kml"];
+let file_paths = ["sample.kml", "west.kml", "east.kml", "utah_walk.kml"];
 
 kml_lines = KmlToArray(file_paths); // Returns array of kml_line objects
 
 file_paths.forEach(kmls => {
-    omnivore.kml(kmls).addTo(map);
-    omnivore.kml(kmls).addTo(map);
     omnivore.kml(kmls).addTo(map);
 });
 
@@ -53,7 +51,7 @@ DrawIdleCdi();
 let recip_hdg;
 let closetest_line;
 let tracking_line = false;
-let breadcrumbs = true;
+let breadcrumbs = false;
 
 
 function GetX_TrackData() {
@@ -120,8 +118,8 @@ function TrackPos() {
         // let user_pos_marker;
         // console.log("track")
         // console.log("Speed = " + current_pos.speed);
-        // GetLocation(); ///////////////////////////////////////////////////// FAKE POS
-        FakePos();
+        GetLocation(); ///////////////////////////////////////////////////// FAKE POS
+        // FakePos();
         map.panTo(new L.LatLng(current_pos.lat, current_pos.lon));
         // map.setZoom(15) // Map autozoom
 
