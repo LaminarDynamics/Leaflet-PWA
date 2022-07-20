@@ -32,7 +32,7 @@ let horz_scaling = .25;   // Meters total cdi width
 let vert_scaling = 100; // Feet total cdi height
 
 // Array of .kmls
-let file_paths = ["../kmls/sample.kml", "../kmls/west.kml", "../kmls/east.kml", "../kmls/utah_walk.kml", "../kmls/slc_line.kml"];
+let file_paths = ["../kmls/sample.kml", "../kmls/west.kml", "../kmls/east.kml", "../kmls/utah_walk.kml", "../kmls/slc_line.kml", "../kmls/airport_road.kml"];
 
 kml_lines = KmlToArray(file_paths); // Returns array of kml_line objects
 
