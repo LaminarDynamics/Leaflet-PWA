@@ -35,7 +35,7 @@ function GetClosestLine(current_pos, kml_lines) {
 
     if (current_pos.heading != null) { // Only give closest line if have heading to compare with line heading
 
-        let tolerance = 89; // Check line bearing is withing x degress of heading
+        let tolerance = 45; // Check line bearing is withing x degress of heading
         let recip = true;
 
         // Get difference between line and current heading
@@ -50,6 +50,7 @@ function GetClosestLine(current_pos, kml_lines) {
         if (current_to_line_hdg_dif > 180) { // Get recip if took long way around compass rose
             current_to_line_hdg_dif -= 360;
         }
+
         // Fix Negative issues
         if (current_to_line_hdg_dif < 0) {
             current_to_line_hdg_dif = current_to_line_hdg_dif * -1
@@ -75,12 +76,13 @@ function GetClosestLine(current_pos, kml_lines) {
             recip = true;
         }
 
-
+        console.log("Difference = ", current_to_line_hdg_dif);
+        console.log("RECIP Difference = ", current_to_line_recip_hdg_dif);
 
         // Closer to normal heading
         if (current_to_line_hdg_dif < current_to_line_recip_hdg_dif) {
             if (current_to_line_hdg_dif < tolerance) {  // Within tolerance
-                return [active_line, recip]
+                return [active_line, false]
             }
         }
 

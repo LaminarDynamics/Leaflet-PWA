@@ -10,7 +10,7 @@ function KmlToArray(file_paths) {
 
     file_paths.forEach(kml_file => {
 
-       
+
 
 
         readTextFile(kml_file)
@@ -19,19 +19,33 @@ function KmlToArray(file_paths) {
         xmlDoc = parser.parseFromString(demo_data, "text/xml");
         let number_of_lines = xmlDoc.getElementsByTagName("Document")[0].getElementsByTagName("Folder").length;
 
+        if (number_of_lines > 1) {
+            for (let i = 0; i < number_of_lines; i++) { // Seperate into multi-dementional array of points defining each line 
+                let item = xmlDoc.getElementsByTagName("Document")[0].getElementsByTagName("Folder")[i];
+                let run_name = item.getElementsByTagName("name")[0].textContent
+                let placemark_data = item.getElementsByTagName("Placemark")[0];
+                let line_string = placemark_data.getElementsByTagName("LineString")[0];
+                let coords = line_string.getElementsByTagName("coordinates")[0].textContent;
 
-        for (let i = 0; i < number_of_lines; i++) { // Seperate into multi-dementional array of points defining each line 
-            let item = xmlDoc.getElementsByTagName("Document")[0].getElementsByTagName("Folder")[i];
-            let run_name = item.getElementsByTagName("name")[0].textContent
+                coords = coords.trim();
+                let line_ends = coords.split(" ");
+                // lines_data.push([run_name, line_ends[0], line_ends[1]])
+
+                lines_data.push(SplitCoordinateData([run_name, line_ends[0], line_ends[1]]));
+            }
+        }
+
+
+        else {
+            let item = xmlDoc.getElementsByTagName("Document")[0];
             let placemark_data = item.getElementsByTagName("Placemark")[0];
             let line_string = placemark_data.getElementsByTagName("LineString")[0];
             let coords = line_string.getElementsByTagName("coordinates")[0].textContent;
-
             coords = coords.trim();
             let line_ends = coords.split(" ");
-            // lines_data.push([run_name, line_ends[0], line_ends[1]])
 
-            lines_data.push(SplitCoordinateData([run_name, line_ends[0], line_ends[1]]));
+            lines_data.push(SplitCoordinateData(["Single Line", line_ends[0], line_ends[1]]));
+            // console.log(lines_data)
         }
 
 

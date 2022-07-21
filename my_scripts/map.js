@@ -20,12 +20,14 @@ let tracking = false;
 let current_pos = {};
 // DEBUG
 current_pos = {
-    lat: 40.22,
-    lon: -112.44,
+    // lat: 40.22,
+    // lon: -112.44,
+    lat: 70.198357,
+    lon: -148.473999,
     speed: 15,
-    altitude: 2481,
-    altitude_feet: 8100,
-    heading: 350,
+    altitude: 0,
+    altitude_feet: 0,
+    heading: 60,
     accuracy: 15
 }
 let horz_scaling = .25;   // Meters total cdi width
@@ -33,8 +35,11 @@ let vert_scaling = 100; // Feet total cdi height
 
 // Array of .kmls
 let file_paths = ["kmls/sample.kml", "kmls/west.kml", "kmls/east.kml", "kmls/utah_walk.kml", "kmls/slc_line.kml", "kmls/airport_road.kml"];
+// let file_paths = ["kmls/airport_road.kml", "kmls/west.kml"];
+
 
 kml_lines = KmlToArray(file_paths); // Returns array of kml_line objects
+// console.log(kml_lines)
 
 file_paths.forEach(kmls => {
     omnivore.kml(kmls).addTo(map);
@@ -63,11 +68,11 @@ function GetX_TrackData() {
         }
 
         else {
-            // console.log("closesest ", closetest_line)
+            console.log("closesest ", closetest_line)
             tracking_line = true;
             current_pos.x_track = closetest_line.x_track;
             if (recip_hdg == true) { // To reverse CDI in recip_hdg 
-                // console.log("Reversing")
+                console.log("Reversing")
                 current_pos.x_track = current_pos.x_track * -1
             }
             current_pos.altitude_dif_feet = current_pos.altitude_feet - closetest_line.altitude_feet;
@@ -84,7 +89,7 @@ function GetX_TrackData() {
 
 
 
-setInterval(TrackPos, 10);
+setInterval(TrackPos, 1);
 //////////////////////////////////  FAKE POSITION THING //////////////////////
 function FakePos() {
 
@@ -98,11 +103,11 @@ function FakePos() {
         accuracy: 15
     }
 
-    current_pos.lat = current_pos.lat + 0.00001;
+    current_pos.lat = current_pos.lat + 0.0000005;
     // current_pos.heading = current_pos.heading + 1
-    current_pos.lon = current_pos.lon - 0.00001;
+    current_pos.lon = current_pos.lon + 0.000005;
     current_pos.altitude -= .005
-    // console.log("Pos = ", current_pos.lat)
+    console.log("Pos = ", current_pos)
 
 }
 
@@ -118,8 +123,8 @@ function TrackPos() {
         // let user_pos_marker;
         // console.log("track")
         // console.log("Speed = " + current_pos.speed);
-        GetLocation(); ///////////////////////////////////////////////////// FAKE POS
-        // FakePos();
+        // GetLocation(); ///////////////////////////////////////////////////// FAKE POS
+        FakePos();
         map.panTo(new L.LatLng(current_pos.lat, current_pos.lon));
         // map.setZoom(15) // Map autozoom
 
@@ -185,10 +190,11 @@ function GetLocation() {
     function success(pos) {
         var crd = pos.coords;
 
-        // console.log('Your current position is:');
-        // console.log(`Latitude : ${crd.latitude}`);
-        // console.log(`Longitude: ${crd.longitude}`);
-        // console.log(`More or less ${crd.accuracy} meters.`);
+        console.log('Your current position is:');
+        console.log(`Latitude : ${crd.latitude}`);
+        console.log(`Longitude: ${crd.longitude}`);
+        console.log(`More or less ${crd.accuracy} meters.`);
+        // $(".map_area").html("<p><span> style='color:white'>Cows</span><p>")
 
         // map.locate({ setView: true, maxZoom: 16 });
 

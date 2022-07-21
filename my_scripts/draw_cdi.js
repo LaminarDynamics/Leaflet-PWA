@@ -59,6 +59,7 @@ function DrawActiveCdi(current_pos, horz_scaling, vert_scaling) {
     let localizer_x = localizer_pixels_of_deflection + localizer_center;
     let glideslope_y = glideslope_pixels_of_deflection + glideslope_center;
 
+    // console.log("X_track ", current_pos.x_track)
     // console.log("localizer X ", localizer_x)
     // console.log("Glideslope Y ", glideslope_y)
 
@@ -70,6 +71,7 @@ function DrawActiveCdi(current_pos, horz_scaling, vert_scaling) {
     localizer.setAttribute("y1", 0)
     localizer.setAttribute("x2", localizer_x)
     localizer.setAttribute("y2", cdi_area.height)
+    // console.log("LOC Percent Deflection: ", localizer_pe rsent_deflection * 100, "%")
 
 
     // Glideslope
