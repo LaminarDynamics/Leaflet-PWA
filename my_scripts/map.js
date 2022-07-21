@@ -31,7 +31,7 @@ current_pos = {
     heading: 60,
     accuracy: 15
 }
-let horz_scaling = .25;   // Meters total cdi width
+let horz_scaling = .065;   // Meters total cdi width
 let vert_scaling = 100; // Feet total cdi height
 
 // Array of .kmls
