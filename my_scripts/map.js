@@ -68,11 +68,11 @@ function GetX_TrackData() {
         }
 
         else {
-            console.log("closesest ", closetest_line)
+            // console.log("closesest ", closetest_line)
             tracking_line = true;
             current_pos.x_track = closetest_line.x_track;
             if (recip_hdg == true) { // To reverse CDI in recip_hdg 
-                console.log("Reversing")
+                // console.log("Reversing")
                 current_pos.x_track = current_pos.x_track * -1
             }
             current_pos.altitude_dif_feet = current_pos.altitude_feet - closetest_line.altitude_feet;
@@ -107,7 +107,7 @@ function FakePos() {
     // current_pos.heading = current_pos.heading + 1
     current_pos.lon = current_pos.lon + 0.000005;
     current_pos.altitude -= .005
-    console.log("Pos = ", current_pos)
+    // console.log("Pos = ", current_pos)
 
 }
 
