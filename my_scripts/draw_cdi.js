@@ -33,6 +33,8 @@ function DrawCircleAtCenter(domRect) {
     var center_circle = document.getElementById('center_circle');
     center_circle.setAttribute("cx", domRect.width / 2)
     center_circle.setAttribute("cy", domRect.height / 2)
+
+    console.log(center_circle.getAttribute("cy"))
 }
 
 

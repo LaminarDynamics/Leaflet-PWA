@@ -123,8 +123,8 @@ function TrackPos() {
         // let user_pos_marker;
         // console.log("track")
         // console.log("Speed = " + current_pos.speed);
-        // GetLocation(); ///////////////////////////////////////////////////// FAKE POS
-        FakePos();
+        GetLocation(); ///////////////////////////////////////////////////// FAKE POS
+        // FakePos();
         map.panTo(new L.LatLng(current_pos.lat, current_pos.lon));
         // map.setZoom(15) // Map autozoom
 
