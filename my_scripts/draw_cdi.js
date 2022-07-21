@@ -43,12 +43,12 @@ function DrawCircleAtCenter(domRect) {
         localStorage.cdi_height = domRect.height
     }
 
-    console.log(localStorage.cdi_height)
+    // console.log(localStorage.cdi_height)
     var center_circle = document.getElementById('center_circle');
     center_circle.setAttribute("cx", localStorage.cdi_width / 2)
     center_circle.setAttribute("cy", localStorage.cdi_height / 2)
 
-    console.log(center_circle.getAttribute("cy"))
+    // console.log(center_circle.getAttribute("cy"))
 
 }
 
