@@ -128,6 +128,7 @@ function TrackPos() {
         map.panTo(new L.LatLng(current_pos.lat, current_pos.lon));
         // map.setZoom(15) // Map autozoom
 
+        
         if (breadcrumbs == true) {
             user_pos_marker = L.circle([current_pos.lat, current_pos.lon], {  // Dot marker
                 color: 'blue',
