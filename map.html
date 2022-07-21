@@ -48,9 +48,6 @@
             <div id="map">
                 <button class="locate_btn">➤</button>
                 <button class="stop_btn">OFF</button>
-
-
-
             </div>
         </div>
 
@@ -60,10 +57,18 @@
             <div class="extra_right"></div>
 
             <div class="display_area">
-                <div class="airspeed_area"></div>
-                <div class="altitude_area"></div>
-                <div class="heading_area"></div>
-                <div class="distance_area"></div>
+                <div class="airspeed_area">
+                    <p id="speed"></p>
+                </div>
+                <div class="altitude_area">
+                    <p id="alt"></p>
+                </div>
+                <div class="heading_area">
+                    <p id="heading"></p>
+                </div>
+                <div class="distance_area">
+                    <p id="coords"></p>
+                </div>
                 <div class="cdi_display">
                     <svg id="cdi_area" height="100%" width="100%" style="background-color: black; ">
                         <circle id="center_circle" cx="250" cy="250" r="30" fill="none"

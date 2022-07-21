@@ -66,9 +66,15 @@
   
   /* For presentation only, no need to copy the code below */
   
-  .lower_area * {
+  .heading_area,
+  .distance_area,
+  .altitude_area,
+  .airspeed_area {
     border: 1px solid red;
     position: relative;
+    color: white;
+    text-align: center;
+    /* margin: auto; */
   }
   
   .container *:after {

@@ -182,7 +182,7 @@ $(".stop_btn").click(function () {
 
 function GetLocation() {
 
-    console.log("Tracking bool = " + tracking);
+    // console.log("Tracking bool = " + tracking);
     var options = {
         enableHighAccuracy: true,
         timeout: 5000,
@@ -192,11 +192,11 @@ function GetLocation() {
     function success(pos) {
         var crd = pos.coords;
 
-        console.log('Your current position is:');
-        console.log(`Latitude : ${crd.latitude}`);
-        console.log(`Longitude: ${crd.longitude}`);
-        console.log(`More or less ${crd.accuracy} meters.`);
-        // $(".map_area").html("<p><span> style='color:white'>Cows</span><p>")
+        // console.log('Your current position is:');
+        // console.log(`Latitude : ${crd.latitude}`);
+        // console.log(`Longitude: ${crd.longitude}`);
+        // console.log(`More or less ${crd.accuracy} meters.`);
+
 
         // map.locate({ setView: true, maxZoom: 16 });
 
@@ -219,6 +219,12 @@ function GetLocation() {
             heading: crd.heading,
             accuracy: crd.accuracy
         }
+        $("#coords").text(`LAT: ${current_pos.lat} ----- LON: ${current_pos.lon} (+/- ${crd.accuracy} meters)`)
+        $("#alt").text(`ALT: ${current_pos.altitude_feet}`)
+        $("#speed").text(`Speed: ${current_pos.speed}`)
+        $("#heading").text(`Heading: ${current_pos.heading}`)
+
+
 
     }
 
