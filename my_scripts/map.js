@@ -1,5 +1,6 @@
 // 5-3-22
 
+
 var map = L.map('map').setView([39.8283, -98.5795], 3);
 // var user_pos = L.marker([0, 0]).addTo(map);
 var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -128,7 +129,7 @@ function TrackPos() {
         map.panTo(new L.LatLng(current_pos.lat, current_pos.lon));
         // map.setZoom(15) // Map autozoom
 
-        
+
         if (breadcrumbs == true) {
             user_pos_marker = L.circle([current_pos.lat, current_pos.lon], {  // Dot marker
                 color: 'blue',
