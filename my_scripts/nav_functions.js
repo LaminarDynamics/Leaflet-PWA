@@ -76,8 +76,8 @@ function GetClosestLine(current_pos, kml_lines) {
             recip = true;
         }
 
-        console.log("Difference = ", current_to_line_hdg_dif);
-        console.log("RECIP Difference = ", current_to_line_recip_hdg_dif);
+        // console.log("Difference = ", current_to_line_hdg_dif);
+        // console.log("RECIP Difference = ", current_to_line_recip_hdg_dif);
 
         // Closer to normal heading
         if (current_to_line_hdg_dif < current_to_line_recip_hdg_dif) {
