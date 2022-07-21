@@ -219,10 +219,10 @@ function GetLocation() {
             heading: crd.heading,
             accuracy: crd.accuracy
         }
-        $("#coords").text(`LAT: ${current_pos.lat} ----- LON: ${current_pos.lon} (+/- ${crd.accuracy} meters)`)
-        $("#alt").text(`ALT: ${current_pos.altitude_feet}`)
-        $("#speed").text(`Speed: ${current_pos.speed}`)
-        $("#heading").text(`Heading: ${current_pos.heading}`)
+        $("#coords").text(`LAT: ${Math.round(current_pos.lat  * 1000) / 1000} ----- LON: ${Math.round(current_pos.lon  * 1000) / 1000} (+/- ${Math.round(crd.accuracy)} meters)`)
+        $("#alt").text(`ALT: ${Math.round(current_pos.altitude_feet)}`)
+        $("#speed").text(`Speed: ${Math.round(current_pos.speed)}`)
+        $("#heading").text(`Heading: ${Math.round(current_pos.heading)}`)
 
 
 
