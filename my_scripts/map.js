@@ -90,7 +90,7 @@ function GetX_TrackData() {
 
 
 
-setInterval(TrackPos, 1);
+// setInterval(TrackPos, 1);
 //////////////////////////////////  FAKE POSITION THING //////////////////////
 function FakePos() {
 
@@ -121,14 +121,10 @@ let user_pos_marker = L.circle([current_pos.lat, current_pos.lon], {  // Dot mar
 
 function TrackPos() {
     if (tracking) {
-        // let user_pos_marker;
-        // console.log("track")
-        // console.log("Speed = " + current_pos.speed);
-        GetLocation(); ///////////////////////////////////////////////////// FAKE POS
+        // GetLocation(); ///////////////////////////////////////////////////// FAKE POS
         // FakePos();
         map.panTo(new L.LatLng(current_pos.lat, current_pos.lon));
         // map.setZoom(15) // Map autozoom
-
 
         if (breadcrumbs == true) {
             user_pos_marker = L.circle([current_pos.lat, current_pos.lon], {  // Dot marker
@@ -140,7 +136,6 @@ function TrackPos() {
         }
 
         user_pos_marker.setLatLng([current_pos.lat, current_pos.lon])   // Move marker thing after first position report
-
 
         GetX_TrackData();
     }
@@ -169,7 +164,7 @@ $(".locate_btn").click(function () {
     console.log("Start tracking");
     tracking = true;
     $(".locate_btn").css({ "background-color": "blue" });
-
+    GetLocation();
 })
 
 $(".stop_btn").click(function () {
@@ -229,7 +224,7 @@ function GetLocation() {
         $("#heading").text(`Heading: ${Math.round(current_pos.heading)}`)
         $("#timestamp").text(`Time: ${current_pos.human_timestamp}`)
 
-
+        TrackPos();
 
     }
 
