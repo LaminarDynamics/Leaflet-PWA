@@ -214,15 +214,20 @@ function GetLocation() {
             lat: crd.latitude,
             lon: crd.longitude,
             speed: crd.speed,
+            speed_mph: pos.coords.speed * 2.23694,
             altitude: crd.altitude,
             altitude_feet: crd.altitude * 3.281,
             heading: crd.heading,
-            accuracy: crd.accuracy
+            accuracy: crd.accuracy,
+            accuracy_feet: pos.coords.accuracy * 3.281,
+            time: pos.timestamp,
+            human_timestamp: GetLocalTimestamp(pos.timestamp),
         }
-        $("#coords").text(`LAT: ${Math.round(current_pos.lat  * 1000) / 1000} ----- LON: ${Math.round(current_pos.lon  * 1000) / 1000} (+/- ${Math.round(crd.accuracy)} meters)`)
+        $("#coords").text(`LAT: ${Math.round(current_pos.lat * 1000) / 1000} ----- LON: ${Math.round(current_pos.lon * 1000) / 1000} (+/- ${Math.round(crd.accuracy)} meters)`)
         $("#alt").text(`ALT: ${Math.round(current_pos.altitude_feet)}`)
-        $("#speed").text(`Speed: ${Math.round(current_pos.speed)}`)
+        $("#speed").text(`Speed: ${Math.round(current_pos.speed_mph)}`)
         $("#heading").text(`Heading: ${Math.round(current_pos.heading)}`)
+        $("#timestamp").text(`Time: ${current_pos.human_timestamp}`)
 
 
 
@@ -235,4 +240,11 @@ function GetLocation() {
 
     navigator.geolocation.watchPosition(success, error, options);
 
+}
+
+
+function GetLocalTimestamp(gps_timestamp) {
+    const dateObject = new Date(gps_timestamp);
+    const humanDateFormat = dateObject.toLocaleString();
+    return humanDateFormat;
 }
