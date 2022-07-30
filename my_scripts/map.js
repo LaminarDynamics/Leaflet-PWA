@@ -18,19 +18,23 @@ var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}
 
 
 let tracking = false;
-let current_pos = {};
+let current_pos = {
+    lat: 0,
+    lon: 0
+};
 // DEBUG
-current_pos = {
-    // lat: 40.22,
-    // lon: -112.44,
-    lat: 70.198357,
-    lon: -148.473999,
-    speed: 15,
-    altitude: 0,
-    altitude_feet: 0,
-    heading: 60,
-    accuracy: 15
-}
+// current_pos = {
+//     // lat: 40.22,
+//     // lon: -112.44,
+//     lat: 70.198357,
+//     lon: -148.473999,
+//     speed: 15,
+//     altitude: 0,
+//     altitude_feet: 0,
+//     heading: 60,
+//     accuracy: 15
+// }
+
 let horz_scaling = .065;   // Meters total cdi width
 let vert_scaling = 100; // Feet total cdi height
 
@@ -113,18 +117,79 @@ function FakePos() {
 }
 
 let user_pos_marker = L.circle([current_pos.lat, current_pos.lon], {  // Dot marker
+    color: 'green',
+    fillColor: '#f03',
+    fillOpacity: .7,
+    radius: 25
+}).addTo(map);
+
+let accuracy_circle = L.circle([current_pos.lat, current_pos.lon], {  // Accuracy circle
     color: 'blue',
     fillColor: '#f03',
     fillOpacity: 0.1,
     radius: 25
 }).addTo(map);
 
+let prediction;
+
+var prediction_circle = L.circle([0, 0], {
+    color: 'blue',
+    fillColor: 'blue',
+    fillOpacity: 0.5,
+    radius: 10
+}).addTo(map);
+
+function ShowPredictedPos() {
+
+    let pos_age = (Date.now() - current_pos.timestamp) * 0.001;  // How long ago last update (seconds)
+
+
+    if (current_pos.timestamp != null && current_pos.speed > 0 && pos_age < 5) { // GPS timestamp and speed for prediction stuff and fresh timestamp get prediction
+
+        prediction = GetPredictionPos(current_pos, pos_age)
+        // document.getElementById("debug").innerHTML = "POS: " + prediction.lat + " " + prediction.lon;
+
+
+        // Show predicted circles
+        prediction_circle.setLatLng([prediction.lat, prediction.lon]);
+        prediction_circle.setRadius(current_pos.accuracy)
+        accuracy_circle.setLatLng([prediction.lat, prediction.lon]);
+
+
+
+        // Update current_pos with predicted location
+        current_pos.lat = prediction.lat;
+        current_pos.lon = prediction.lon;
+
+
+
+        // Hide plain GPS circles
+        user_pos_marker.setRadius(0);
+        // accuracy_circle.setRadius(0);
+
+
+        // PLOT IT!
+        TrackPos();
+    }
+    else {
+        PlainGPS();
+    }
+
+    function PlainGPS() {   // Show plain GPS pos if not enough good data to make prediction
+        user_pos_marker.setLatLng([current_pos.lat, current_pos.lon]);
+        accuracy_circle.setLatLng([current_pos.lat, current_pos.lon]);
+        accuracy_circle.setRadius(current_pos.accuracy)
+    }
+
+}
+
 function TrackPos() {
     if (tracking) {
         // GetLocation(); ///////////////////////////////////////////////////// FAKE POS
         // FakePos();
+
         map.panTo(new L.LatLng(current_pos.lat, current_pos.lon));
-        // map.setZoom(15) // Map autozoom
+        map.setZoom(15) // Map autozoom
 
         if (breadcrumbs == true) {
             user_pos_marker = L.circle([current_pos.lat, current_pos.lon], {  // Dot marker
@@ -135,7 +200,7 @@ function TrackPos() {
             }).addTo(map);
         }
 
-        user_pos_marker.setLatLng([current_pos.lat, current_pos.lon])   // Move marker thing after first position report
+        // user_pos_marker.setLatLng([current_pos.lat, current_pos.lon])   // Move marker thing after first position report
 
         GetX_TrackData();
     }
@@ -151,13 +216,10 @@ window.onresize = StyleStuff; // No parentathes because idk
 
 StyleStuff(); // Do on load
 function StyleStuff() {
-
     document.getElementById("map").style.height = (window.innerHeight / 2) + "px";
     var offsetHeight = document.getElementById('map').offsetHeight;
     // console.log(offsetHeight)
 }
-
-
 
 
 $(".locate_btn").click(function () {
@@ -165,6 +227,7 @@ $(".locate_btn").click(function () {
     tracking = true;
     $(".locate_btn").css({ "background-color": "blue" });
     GetLocation();
+    setInterval(ShowPredictedPos, 100)
 })
 
 $(".stop_btn").click(function () {
@@ -177,7 +240,6 @@ $(".stop_btn").click(function () {
 
 function GetLocation() {
 
-    // console.log("Tracking bool = " + tracking);
     var options = {
         enableHighAccuracy: true,
         timeout: 5000,
@@ -186,24 +248,6 @@ function GetLocation() {
 
     function success(pos) {
         var crd = pos.coords;
-
-        // console.log('Your current position is:');
-        // console.log(`Latitude : ${crd.latitude}`);
-        // console.log(`Longitude: ${crd.longitude}`);
-        // console.log(`More or less ${crd.accuracy} meters.`);
-
-
-        // map.locate({ setView: true, maxZoom: 16 });
-
-        // var user_pos = L.marker([crd.latitude, crd.longitude]).addTo(map);
-        // user_pos.bindPopup("You are within " + crd.accuracy.toFixed() + " meters from this point").openPopup();
-
-        // var accuracy_circle = L.circle([crd.latitude, crd.longitude], {
-        //     color: 'red',
-        //     fillColor: '#f03',
-        //     fillOpacity: 0.1,
-        //     radius: 500
-        // }).addTo(map);
 
         current_pos = {
             lat: crd.latitude,
@@ -215,7 +259,7 @@ function GetLocation() {
             heading: crd.heading,
             accuracy: crd.accuracy,
             accuracy_feet: pos.coords.accuracy * 3.281,
-            time: pos.timestamp,
+            timestamp: pos.timestamp,
             human_timestamp: GetLocalTimestamp(pos.timestamp),
         }
         $("#coords").text(`LAT: ${Math.round(current_pos.lat * 1000) / 1000} ----- LON: ${Math.round(current_pos.lon * 1000) / 1000} (+/- ${Math.round(crd.accuracy)} meters)`)
@@ -224,7 +268,7 @@ function GetLocation() {
         $("#heading").text(`Heading: ${Math.round(current_pos.heading)}`)
         $("#timestamp").text(`Time: ${current_pos.human_timestamp}`)
 
-        TrackPos();
+        // TrackPos();
 
     }
 
