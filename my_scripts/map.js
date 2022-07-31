@@ -147,7 +147,7 @@ function ShowPredictedPos() {
     if (current_pos.timestamp != null && current_pos.speed > 0 && pos_age < 5) { // GPS timestamp and speed for prediction stuff and fresh timestamp get prediction
 
         prediction = GetPredictionPos(current_pos, pos_age)
-        document.getElementById("debug").innerHTML = "POS: " + prediction.lat + " " + prediction.lon;
+        // document.getElementById("debug").innerHTML = "POS: " + prediction.lat + " " + prediction.lon;
 
 
         // Show predicted circles
@@ -160,8 +160,8 @@ function ShowPredictedPos() {
 
 
         // Update current_pos with predicted location
-        current_pos.lat = prediction.lat;
-        current_pos.lon = prediction.lon;
+        // current_pos.lat = prediction.lat;
+        // current_pos.lon = prediction.lon;
 
 
 

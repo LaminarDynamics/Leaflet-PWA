@@ -4,7 +4,7 @@
 function PlayBackBtn() {
     ReadText();
     setInterval(InterateJson, 1000);
-    setInterval(ShowPredictedPos, 250);
+    setInterval(ShowPredictedPos, 5);
 }
 
 
