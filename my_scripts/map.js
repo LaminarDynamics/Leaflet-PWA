@@ -1,6 +1,5 @@
 // 5-3-22
 
-
 var map = L.map('map').setView([39.8283, -98.5795], 3);
 // var user_pos = L.marker([0, 0]).addTo(map);
 var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -13,34 +12,18 @@ var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}
 }).addTo(map);
 
 
-
-
-
-
 let tracking = false;
 let current_pos = {
     lat: 0,
     lon: 0
 };
-// DEBUG
-// current_pos = {
-//     // lat: 40.22,
-//     // lon: -112.44,
-//     lat: 70.198357,
-//     lon: -148.473999,
-//     speed: 15,
-//     altitude: 0,
-//     altitude_feet: 0,
-//     heading: 60,
-//     accuracy: 15
-// }
+
 
 let horz_scaling = .065;   // Meters total cdi width
 let vert_scaling = 100; // Feet total cdi height
 
 // Array of .kmls
 let file_paths = ["kmls/sample.kml", "kmls/west.kml", "kmls/east.kml", "kmls/utah_walk.kml", "kmls/slc_line.kml", "kmls/airport_road.kml"];
-// let file_paths = ["kmls/airport_road.kml", "kmls/west.kml"];
 
 
 kml_lines = KmlToArray(file_paths); // Returns array of kml_line objects
@@ -53,9 +36,7 @@ file_paths.forEach(kmls => {
 
 L.edgeScaleBar().addTo(map);
 
-// console.log(kml_lines)
 DrawIdleCdi();
-
 
 
 let recip_hdg;
@@ -92,30 +73,6 @@ function GetX_TrackData(current_pos) {
 }
 
 
-
-
-// setInterval(TrackPos, 1);
-//////////////////////////////////  FAKE POSITION THING //////////////////////
-// function FakePos() {
-
-//     current_pos = {
-//         lat: current_pos.lat,
-//         lon: current_pos.lon,
-//         speed: 15,
-//         altitude: current_pos.altitude,
-//         altitude_feet: current_pos.altitude * 3.281,
-//         heading: current_pos.heading,
-//         accuracy: 15
-//     }
-
-//     current_pos.lat = current_pos.lat + 0.0000005;
-//     // current_pos.heading = current_pos.heading + 1
-//     current_pos.lon = current_pos.lon + 0.000005;
-//     current_pos.altitude -= .005
-//     // console.log("Pos = ", current_pos)
-
-// }
-
 let user_pos_marker = L.circle([current_pos.lat, current_pos.lon], {  // Dot marker
     color: 'green',
     fillColor: '#f03',
@@ -140,30 +97,17 @@ var prediction_circle = L.circle([0, 0], {
 }).addTo(map);
 
 function ShowPredictedPos() {
-
     let pos_age = (Date.now() - current_pos.timestamp) * 0.001;  // How long ago last update (seconds)
 
-
     if (current_pos.timestamp != null && current_pos.speed > 0 && pos_age < 5) { // GPS timestamp and speed for prediction stuff and fresh timestamp get prediction
-
         prediction = GetPredictionPos(current_pos, pos_age)
         // document.getElementById("debug").innerHTML = "POS: " + prediction.lat + " " + prediction.lon;
-
 
         // Show predicted circles
         prediction_circle.setLatLng([prediction.lat, prediction.lon]);
         prediction_circle.setRadius(current_pos.accuracy)
         accuracy_circle.setLatLng([prediction.lat, prediction.lon]);
         map.setView([prediction.lat, prediction.lon], 16); // Map lock
-
-
-
-
-        // Update current_pos with predicted location
-        // current_pos.lat = prediction.lat;
-        // current_pos.lon = prediction.lon; // THIS SCREWS EVERYTHING UP!
-
-
 
         // Hide plain GPS circles
         user_pos_marker.setRadius(0);
@@ -188,11 +132,7 @@ function ShowPredictedPos() {
 
 function TrackPos() {
     if (tracking) {
-        // GetLocation(); ///////////////////////////////////////////////////// FAKE POS
-        // FakePos();
         map.setView([current_pos.lat, current_pos.lon], 16);
-        // map.panTo(new L.LatLng(current_pos.lat, current_pos.lon));
-        // map.setZoom(15) // Map autozoom
 
         if (breadcrumbs == true) {
             user_pos_marker = L.circle([current_pos.lat, current_pos.lon], {  // Dot marker
@@ -202,8 +142,6 @@ function TrackPos() {
                 radius: 25
             }).addTo(map);
         }
-
-        // user_pos_marker.setLatLng([current_pos.lat, current_pos.lon])   // Move marker thing after first position report
 
         GetX_TrackData(current_pos);
     }
@@ -222,7 +160,6 @@ function TrackPos() {
         DrawActiveCdi(prediction, horz_scaling, vert_scaling)
     }
 }
-
 
 window.onresize = StyleStuff; // No parentathes because idk
 
@@ -280,8 +217,6 @@ function GetLocation() {
         $("#heading").text(`Heading: ${Math.round(current_pos.heading)}`)
         $("#timestamp").text(`Time: ${current_pos.human_timestamp}`)
 
-        // TrackPos();
-
     }
 
     function error(err) {
@@ -290,9 +225,7 @@ function GetLocation() {
     }
 
     navigator.geolocation.watchPosition(success, error, options);
-
 }
-
 
 function GetLocalTimestamp(gps_timestamp) {
     const dateObject = new Date(gps_timestamp);
