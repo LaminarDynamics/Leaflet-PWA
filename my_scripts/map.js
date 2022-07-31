@@ -96,6 +96,10 @@ var prediction_circle = L.circle([0, 0], {
     radius: 10
 }).addTo(map);
 
+let trend_line = L.polyline([[0, 0], [1, 1]], {
+    color: 'red'
+}).addTo(map);
+
 function ShowPredictedPos() {
     let pos_age = (Date.now() - current_pos.timestamp) * 0.001;  // How long ago last update (seconds)
 
@@ -107,7 +111,18 @@ function ShowPredictedPos() {
         prediction_circle.setLatLng([prediction.lat, prediction.lon]);
         prediction_circle.setRadius(current_pos.accuracy)
         accuracy_circle.setLatLng([prediction.lat, prediction.lon]);
-        map.setView([prediction.lat, prediction.lon], 16); // Map lock
+        // map.setView([prediction.lat, prediction.lon], 16); // Map lock
+
+        // Show track/trend line
+        prediction.heading = current_pos.heading; // Need these for calculations
+        prediction.altitude_feet = current_pos.altitude_feet;   // Need these for calculations
+        prediction.speed = current_pos.speed;   // Need these for calculations
+        let trend_line_end = TrendLine(prediction, 10); // Starting point and length in seconds
+        let trend_line_points = [
+            [prediction.lat, prediction.lon],
+            [trend_line_end.lat, trend_line_end.lon]
+        ];
+        trend_line.setLatLngs(trend_line_points);
 
         // Hide plain GPS circles
         user_pos_marker.setRadius(0);
@@ -132,7 +147,7 @@ function ShowPredictedPos() {
 
 function TrackPos() {
     if (tracking) {
-        map.setView([current_pos.lat, current_pos.lon], 16);
+        // map.setView([current_pos.lat, current_pos.lon], 16);
 
         if (breadcrumbs == true) {
             user_pos_marker = L.circle([current_pos.lat, current_pos.lon], {  // Dot marker
@@ -154,8 +169,6 @@ function TrackPos() {
         // DrawActiveCdi(current_pos, horz_scaling, vert_scaling)
 
         // Prediction
-        prediction.heading = current_pos.heading;
-        prediction.altitude_feet = current_pos.altitude_feet;
         GetX_TrackData(prediction);
         DrawActiveCdi(prediction, horz_scaling, vert_scaling)
     }

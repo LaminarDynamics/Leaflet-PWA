@@ -34,3 +34,21 @@ function toDegrees(radians) {
     var pi = Math.PI;
     return radians * (180 / pi);
 }
+
+
+
+
+
+// Trend Line
+function TrendLine(current_pos, time_length) {  // Current_pos and how long the line should be (seconds)
+    // Get position of line end (User pos + direction of movement * speed)
+    let points = GetPredictionPos(current_pos, time_length);
+
+
+    let line_end = {
+        lat : points.lat,
+        lon : points.lon
+    };
+
+    return line_end;
+}
