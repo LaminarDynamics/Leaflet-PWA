@@ -64,7 +64,7 @@ let tracking_line = false;
 let breadcrumbs = false;
 
 
-function GetX_TrackData() {
+function GetX_TrackData(current_pos) {
     if (current_pos.heading != null) { // Only give closest line if have heading to compare with line heading
         [closetest_line, recip_hdg] = GetClosestLine(current_pos, kml_lines)
         if (closetest_line == null) {
@@ -161,7 +161,7 @@ function ShowPredictedPos() {
 
         // Update current_pos with predicted location
         // current_pos.lat = prediction.lat;
-        // current_pos.lon = prediction.lon;
+        // current_pos.lon = prediction.lon; // THIS SCREWS EVERYTHING UP!
 
 
 
@@ -190,7 +190,7 @@ function TrackPos() {
     if (tracking) {
         // GetLocation(); ///////////////////////////////////////////////////// FAKE POS
         // FakePos();
-        map.setView([position.lat, position.lon], 16);
+        map.setView([current_pos.lat, current_pos.lon], 16);
         // map.panTo(new L.LatLng(current_pos.lat, current_pos.lon));
         // map.setZoom(15) // Map autozoom
 
@@ -205,12 +205,21 @@ function TrackPos() {
 
         // user_pos_marker.setLatLng([current_pos.lat, current_pos.lon])   // Move marker thing after first position report
 
-        GetX_TrackData();
+        GetX_TrackData(current_pos);
     }
 
     if (tracking_line) {
-        GetX_TrackData();
-        DrawActiveCdi(current_pos, horz_scaling, vert_scaling)
+        // Which data to send to X_track and CDI calculators for display
+
+        // Actual
+        // GetX_TrackData(current_pos);
+        // DrawActiveCdi(current_pos, horz_scaling, vert_scaling)
+
+        // Prediction
+        prediction.heading = current_pos.heading;
+        prediction.altitude_feet = current_pos.altitude_feet;
+        GetX_TrackData(prediction);
+        DrawActiveCdi(prediction, horz_scaling, vert_scaling)
     }
 }
 

@@ -19,7 +19,7 @@ function GetPredictionPos(positon, interval) {
         lat: lat2,
         lon: lon2
     }
-    console.log("Predicted: ", predicted_pos)
+    // console.log("Predicted: ", predicted_pos)
     return predicted_pos;
 }
 

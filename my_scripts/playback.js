@@ -2,6 +2,7 @@
 
 
 function PlayBackBtn() {
+    tracking = true;  // Allow CDI to be drawn even if simulated position
     ReadText();
     setInterval(InterateJson, 1000);
     setInterval(ShowPredictedPos, 5);
@@ -14,7 +15,7 @@ let file_counter = 0;
 let fresh_json;
 
 function ReadText() {
-    fetch("kmls/back.txt")
+    fetch("kmls/path2.txt")
         .then(response => response.text())
         .then(text => Do(text))
     // outputs the content of the text file
@@ -40,7 +41,7 @@ function InterateJson() {
         lat: current_item.lat,
         lon: current_item.lon,
         alt: current_item.alt,
-        alt_feet: current_item.alt_feet,
+        altitude_feet: current_item.alt_feet,
         speed: current_item.speed_mph / 2.237,
         speed_mph : current_item.speed_mph,
         accuracy: current_item.accuracy_feet / 3.281,
