@@ -39,6 +39,7 @@
     <script src="my_scripts/map.js" defer></script>
     <script src="my_scripts/draw_cdi.js"></script>
     <script src="my_scripts/prediction.js"></script>
+    <script src="my_scripts/playback.js"></script>
 
 </head>
 
@@ -60,6 +61,7 @@
             <div class="display_area">
                 <div class="airspeed_area">
                     <p id="speed"></p><br>
+                    <button onclick="PlayBackBtn()">SIM</button>
                     <p id="debug">debug</p>
                 </div>
                 <div class="altitude_area">
@@ -70,7 +72,9 @@
                     <p id="timestamp"></p>
                 </div>
                 <div class="distance_area">
-                    <span style="font-size: 10px;"><p id="coords"></p></span>
+                    <span style="font-size: 10px;">
+                        <p id="coords"></p>
+                    </span>
                 </div>
                 <div class="cdi_display">
                     <svg id="cdi_area" height="100%" width="100%" style="background-color: black; ">
