@@ -247,7 +247,7 @@ function GetLocation() {
         }
         $("#coords").text(`LAT: ${Math.round(current_pos.lat * 1000) / 1000} ----- LON: ${Math.round(current_pos.lon * 1000) / 1000} (+/- ${Math.round(crd.accuracy)} meters)`)
         $("#alt").text(`ALT: ${Math.round(current_pos.altitude_feet)}`)
-        $("#speed").text(`Speed: ${Math.round(current_pos.speed_mph)}`)
+        $("#speed").text(`Speed: ${Math.round(current_pos.speed_mph / 1.151)} kts`)
         $("#heading").text(`Heading: ${Math.round(current_pos.heading)}`)
         $("#timestamp").text(`Time: ${current_pos.human_timestamp}`)
 
