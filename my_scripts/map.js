@@ -22,7 +22,6 @@ let current_pos = {
 
 function ChangeCdi() {  // Allow user to change CDI sensitivity 
     let input_cdi_scale = parseFloat(document.getElementById("cdi_scale").value);
-    console.log(typeof(input_cdi_scale))
     horz_scaling = input_cdi_scale;
 }
 let input_cdi_scale = document.getElementById("cdi_scale");
@@ -34,8 +33,8 @@ let vert_scaling = 100; // Feet total cdi height
 let file_paths = ["kmls/airport_road.kml", "kmls/brooks1.kml", "kmls/brooks2.kml", "kmls/barrow.kml"];
 
 
-
-kml_lines = KmlToArray(file_paths); // Returns array of kml_line objects
+let kml_lines = KmlsToArray(file_paths);
+// kml_lines = KmlToArray(file_paths); // Returns array of kml_line objects
 // console.log(kml_lines)
 
 file_paths.forEach(kmls => {
@@ -190,7 +189,6 @@ function TrackPos() {
         // GetX_TrackData(current_pos);
         // DrawActiveCdi(current_pos, horz_scaling, vert_scaling)
 
-        console.log(horz_scaling)
         // Prediction
         GetX_TrackData(prediction);
         DrawActiveCdi(prediction, horz_scaling, vert_scaling)
