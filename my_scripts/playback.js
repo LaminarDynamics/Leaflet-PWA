@@ -1,7 +1,7 @@
 // 7-30-22
 
-
 function PlayBackBtn() {
+    $("#play_btn").css("background-color","red");   // Turn button red so I know sim is on
     tracking = true;  // Allow CDI to be drawn even if simulated position
     ReadText();
     setInterval(InterateJson, 1000);
