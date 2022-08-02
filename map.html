@@ -45,7 +45,7 @@
     <script src="sw.js"></script>
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" sizes="180x180" href="icons/apple.png">
-    <meta name="theme-color" content="#3e2087"/>
+    <meta name="theme-color" content="#3e2087" />
 
 </head>
 
@@ -75,7 +75,6 @@
                 </div>
                 <div class="altitude_area">
                     <p id="alt"></p>
-                    <input type="number" id="cdi_scale" onchange="ChangeCdi()" maxlength="4" size="4" placeholder=".065"></input>
                 </div>
                 <div class="heading_area">
                     <p id="heading"></p>
@@ -84,6 +83,9 @@
                 <div class="distance_area">
                     <span style="font-size: 10px;">
                         <p id="coords"></p>
+                        <input type="number" id="cdi_scale" onchange="ChangeCdi()" maxlength="4" size="4"
+                            placeholder=".065"></input>
+
                     </span>
                 </div>
                 <div class="cdi_display">
