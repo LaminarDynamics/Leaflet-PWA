@@ -65,8 +65,14 @@ function GetX_TrackData(current_pos) {
             // console.log("closesest ", closetest_line)
             tracking_line = true;
             current_pos.x_track = closetest_line.x_track;
+            $("#debug").text(`Reversing: ${recip_hdg}`);
+            $("#debug").css("background-color", "black");
+
             if (recip_hdg == true) { // To reverse CDI in recip_hdg 
                 // console.log("Reversing")
+                $("#debug").text(`Reversing: ${recip_hdg}`);
+                $("#debug").css("background-color", "red");
+
                 current_pos.x_track = current_pos.x_track * -1
             }
             current_pos.altitude_dif_feet = current_pos.altitude_feet - closetest_line.altitude_feet;
