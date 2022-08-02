@@ -68,10 +68,14 @@
                 <div class="airspeed_area">
                     <p id="speed"></p><br>
                     <button onclick="PlayBackBtn()">SIM</button>
+                    <label for="center_box">
+                        <input type="checkbox" id="center_box" name="center_box"> Center Map
+                    </label>
                     <p id="debug">debug</p>
                 </div>
                 <div class="altitude_area">
                     <p id="alt"></p>
+                    <input type="number" id="cdi_scale" onchange="ChangeCdi()" maxlength="4" size="4" placeholder=".065"></input>
                 </div>
                 <div class="heading_area">
                     <p id="heading"></p>

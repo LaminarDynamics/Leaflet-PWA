@@ -20,6 +20,12 @@ let current_pos = {
 };
 
 
+function ChangeCdi() {  // Allow user to change CDI sensitivity 
+    let input_cdi_scale = parseFloat(document.getElementById("cdi_scale").value);
+    console.log(typeof(input_cdi_scale))
+    horz_scaling = input_cdi_scale;
+}
+let input_cdi_scale = document.getElementById("cdi_scale");
 let horz_scaling = .065;   // Meters total cdi width
 let vert_scaling = 100; // Feet total cdi height
 
@@ -103,6 +109,9 @@ let trend_line = L.polyline([[0, 0], [1, 1]], {
     color: 'red'
 }).addTo(map);
 
+let checkbox_checked = document.querySelector('#center_box');   // Map panning lock
+let first_update = true;    // For map panning
+
 function ShowPredictedPos() {
     let pos_age = (Date.now() - current_pos.timestamp) * 0.001;  // How long ago last update (seconds)
 
@@ -114,7 +123,17 @@ function ShowPredictedPos() {
         prediction_circle.setLatLng([prediction.lat, prediction.lon]);
         prediction_circle.setRadius(current_pos.accuracy)
         accuracy_circle.setLatLng([prediction.lat, prediction.lon]);
-        // map.setView([prediction.lat, prediction.lon], 16); // Map lock
+
+        // Map pan lock
+        if (checkbox_checked.checked) { // Zoom and pan to pos initially, then allow user to set zoom
+            if (first_update) {
+                map.setView([prediction.lat, prediction.lon], 16);
+                first_update = false;
+            }
+            else {
+                map.panTo([prediction.lat, prediction.lon]);
+            }
+        }
 
         // Show track/trend line
         prediction.heading = current_pos.heading; // Need these for calculations
@@ -171,6 +190,7 @@ function TrackPos() {
         // GetX_TrackData(current_pos);
         // DrawActiveCdi(current_pos, horz_scaling, vert_scaling)
 
+        console.log(horz_scaling)
         // Prediction
         GetX_TrackData(prediction);
         DrawActiveCdi(prediction, horz_scaling, vert_scaling)
