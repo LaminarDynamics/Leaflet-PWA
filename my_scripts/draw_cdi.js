@@ -53,7 +53,7 @@ function DrawCircleAtCenter(domRect) {
 }
 
 
-function DrawActiveCdi(current_pos, horz_scaling, vert_scaling) {
+function DrawActiveCdi(current_pos, horz_scaling, vert_scaling) {   // Horizontal_scaling (meters)
 
     // console.log(current_pos)
 
@@ -66,7 +66,7 @@ function DrawActiveCdi(current_pos, horz_scaling, vert_scaling) {
     let localizer_center = localStorage.cdi_width / 2;
     let glideslope_center = localStorage.cdi_height / 2;
 
-    let localizer_persent_deflection = current_pos.x_track / horz_scaling;
+    let localizer_persent_deflection = current_pos.x_track / (horz_scaling / 100);
     let glideslope_persent_deflection = current_pos.altitude_dif_feet / vert_scaling;
 
     let localizer_pixels_of_deflection = localizer_persent_deflection * localStorage.cdi_width;

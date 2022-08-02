@@ -25,7 +25,7 @@ function ChangeCdi() {  // Allow user to change CDI sensitivity
     horz_scaling = input_cdi_scale;
 }
 let input_cdi_scale = document.getElementById("cdi_scale");
-let horz_scaling = .065;   // Meters total cdi width
+let horz_scaling = 1;   // Meters total cdi width
 let vert_scaling = 100; // Feet total cdi height
 
 // Array of .kmls
@@ -74,9 +74,10 @@ function GetX_TrackData(current_pos) {
                 $("#debug").css("background-color", "red");
 
                 current_pos.x_track = current_pos.x_track * -1
+                prediction.x_track = current_pos.x_track;
             }
             current_pos.altitude_dif_feet = current_pos.altitude_feet - closetest_line.altitude_feet;
-            // console.log(current_pos)
+            // console.log(current_pos.x_track * 1000) // x_track (meters)
         }
     }
 
@@ -185,7 +186,8 @@ function TrackPos() {
             }).addTo(map);
         }
 
-        GetX_TrackData(current_pos);
+        GetX_TrackData(prediction);
+        // GetX_TrackData(current_pos);
     }
 
     if (tracking_line) {
@@ -198,6 +200,14 @@ function TrackPos() {
         // Prediction
         GetX_TrackData(prediction);
         DrawActiveCdi(prediction, horz_scaling, vert_scaling)
+
+        // X_track readout
+        if (prediction.x_track < 0) {  // Right of center
+            $("#x_track").text(`<---  ${Math.round(prediction.x_track * 1000)}`)
+        }
+        if (prediction.x_track > 0) {  // Left of center
+            $("#x_track").text(`${Math.round(prediction.x_track * 1000)}  --->`)
+        }
     }
 }
 
