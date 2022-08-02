@@ -1,0 +1,23 @@
+{
+    "name": "KML Line Tracker",
+    "short_name": "NEON KML",
+    "description": ".kml line follower",
+    "icons": [
+        {
+            "src": "icons/32.png",
+            "sizes": "32x32",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        }
+    ],
+    "start_url": "map.html",
+    "display": "fullscreen",
+    "theme_color": "#1c7e9c",
+    "background_color": "#e84d00"
+}

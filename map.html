@@ -41,6 +41,12 @@
     <script src="my_scripts/prediction.js"></script>
     <script src="my_scripts/playback.js"></script>
 
+    <!-- PWA Stuffs  -->
+    <script src="sw.js"></script>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple.png">
+    <meta name="theme-color" content="#3e2087"/>
+
 </head>
 
 <body>
@@ -96,7 +102,9 @@
     <script type="text/javascript">
 
 
-
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        };
 
     </script>
 </body>

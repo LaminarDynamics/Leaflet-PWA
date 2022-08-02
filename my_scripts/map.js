@@ -1,6 +1,7 @@
 // 5-3-22
 
-var map = L.map('map').setView([39.8283, -98.5795], 3);
+var map = L.map('map').setView([61.86, -151.0], 3); // AK
+// var map = L.map('map').setView([39.8283, -98.5795], 3); // Lower 48
 // var user_pos = L.marker([0, 0]).addTo(map);
 var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
     maxZoom: 18,
@@ -23,7 +24,9 @@ let horz_scaling = .065;   // Meters total cdi width
 let vert_scaling = 100; // Feet total cdi height
 
 // Array of .kmls
-let file_paths = ["kmls/sample.kml", "kmls/west.kml", "kmls/east.kml", "kmls/utah_walk.kml", "kmls/slc_line.kml", "kmls/airport_road.kml"];
+// let file_paths = ["kmls/sample.kml", "kmls/west.kml", "kmls/east.kml", "kmls/utah_walk.kml", "kmls/slc_line.kml", "kmls/airport_road.kml"];
+let file_paths = ["kmls/airport_road.kml", "kmls/brooks1.kml", "kmls/brooks2.kml", "kmls/barrow.kml"];
+
 
 
 kml_lines = KmlToArray(file_paths); // Returns array of kml_line objects

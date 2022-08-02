@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>D18_TOOL_C1_P1_v3_PRM_fltlines.kml</name>
+	<Style id="Line">
+		<LineStyle>
+			<color>ff93e9f5</color>
+		</LineStyle>
+	</Style>
+	<Folder>
+		<name>D18_TOOL_C1_P1_v3_PRM</name>
+		<open>1</open>
+		<Style id="Polygon">
+			<LineStyle>
+				<color>ff00008b</color>
+			</LineStyle>
+			<PolyStyle>
+				<color>9990ee90</color>
+			</PolyStyle>
+		</Style>
+		<Folder>
+			<name>Area SA #1 - Line 1</name>
+			<Placemark>
+				<name>Pass 1</name>
+				<description>GPS Altitude: 6410 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.69958531,68.58613694,1 -149.08689334,68.58583824,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Area SA #2 - Line 2</name>
+			<Placemark>
+				<name>Pass 2</name>
+				<description>GPS Altitude: 5938 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.70090747,68.66088558,1 -149.08720647,68.66059756999999,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Area SA #3 - Lines 3-4</name>
+			<Placemark>
+				<name>Pass 3</name>
+				<description>GPS Altitude: 6358 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.27756002,68.53946599,1 -149.2760591,68.70282835,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 4</name>
+				<description>GPS Altitude: 6358 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.26888221,68.5394398,1 -149.26730517,68.70267676,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Area SA #4 - Lines 5-7</name>
+			<Placemark>
+				<name>Pass 5</name>
+				<description>GPS Altitude: 6246 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.30363698,68.53948741000001,1 -149.30234005,68.70345964000001,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 6</name>
+				<description>GPS Altitude: 6276 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.29496097,68.5394805,1 -149.29357172,68.70293269,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 7</name>
+				<description>GPS Altitude: 6309 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.2862605,68.53947347,1 -149.28482415,68.70308703000001,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Area SA #5 - Lines 8-12</name>
+			<Placemark>
+				<name>Pass 8</name>
+				<description>GPS Altitude: 6056 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.34711671,68.53953183,1 -149.34611601,68.70328861,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 9</name>
+				<description>GPS Altitude: 6072 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.33841624,68.53952750000001,1 -149.33736981,68.70251234,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 10</name>
+				<description>GPS Altitude: 6089 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.32973839,68.53950445,1 -149.32858728,68.70351298999999,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 11</name>
+				<description>GPS Altitude: 6108 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.32103977,68.53951714999999,1 -149.31984949,68.70257417000001,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 12</name>
+				<description>GPS Altitude: 6151 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.31233745,68.53949354,1 -149.31108598,68.70400438999999,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Area SA #6 - Lines 13-14</name>
+			<Placemark>
+				<name>Pass 13</name>
+				<description>GPS Altitude: 6085 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.36449504,68.53955740000001,1 -149.3636254,68.70311651999999,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 14</name>
+				<description>GPS Altitude: 6076 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.35581717,68.53953571,1 -149.35487858,68.70257449,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Area SA #7 - Lines 15-18</name>
+			<Placemark>
+				<name>Pass 15</name>
+				<description>GPS Altitude: 6325 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.39927238,68.53956697,1 -149.39866698,68.70459735,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 16</name>
+				<description>GPS Altitude: 6325 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.39057003,68.53954742000001,1 -149.3899133,68.70262132000001,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 17</name>
+				<description>GPS Altitude: 6289 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.38189595,68.53956291,1 -149.38113348,68.70409135,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 18</name>
+				<description>GPS Altitude: 6276 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.37319361,68.53954246000001,1 -149.37239919,68.70367568,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Area SA #8 - Lines 19-23</name>
+			<Placemark>
+				<name>Pass 19</name>
+				<description>GPS Altitude: 6351 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.44275197,68.53958665,1 -149.44242355,68.70398885,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 20</name>
+				<description>GPS Altitude: 6345 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.43404962,68.53956934999999,1 -149.43369334,68.70339678000001,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 21</name>
+				<description>GPS Altitude: 6368 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.42535113,68.53958744000001,1 -149.42492922,68.70271501000001,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 22</name>
+				<description>GPS Altitude: 6348 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.41667325,68.53956888,1 -149.41617998,68.70330695,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 23</name>
+				<description>GPS Altitude: 6348 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.40797282,68.53956814999999,1 -149.40742164,68.7033601,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Area SA #9 - Lines 24-25</name>
+			<Placemark>
+				<name>Pass 24</name>
+				<description>GPS Altitude: 6351 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.46012831,68.53958441,1 -149.45997095,68.70303441,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 25</name>
+				<description>GPS Altitude: 6335 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.45142791,68.53958593,1 -149.45118898,68.70377225,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Area SA #10 - Lines 26-28</name>
+			<Placemark>
+				<name>Pass 26</name>
+				<description>GPS Altitude: 6272 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.48620696,68.53959544,1 -149.48623408,68.70365538999999,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 27</name>
+				<description>GPS Altitude: 6286 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.47752908,68.53958002,1 -149.47746151,68.70425086,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 28</name>
+				<description>GPS Altitude: 6286 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.4688287,68.53958244,1 -149.46872457,68.70405558,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Area SA #11 - Lines 29-31</name>
+			<Placemark>
+				<name>Pass 29</name>
+				<description>GPS Altitude: 6171 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.51228356,68.53958449,1 -149.51249735,68.70294402,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 30</name>
+				<description>GPS Altitude: 6207 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.50360769,68.53958835,1 -149.50373673,68.70407917999999,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 31</name>
+				<description>GPS Altitude: 6236 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.49490534,68.53957419,1 -149.49498701,68.70399313999999,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Area SA #12 - Lines 32-37</name>
+			<Placemark>
+				<name>Pass 32</name>
+				<description>GPS Altitude: 5935 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.56446297,68.53956801,1 -149.56503556,68.70402185,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 33</name>
+				<description>GPS Altitude: 5977 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.55576269,68.53957493,1 -149.55628999,68.7028978,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 34</name>
+				<description>GPS Altitude: 6007 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.5470624,68.5395814,1 -149.54753433,68.70297612,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 35</name>
+				<description>GPS Altitude: 6030 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.53838454,68.53956913,1 -149.53876982,68.70362852,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 36</name>
+				<description>GPS Altitude: 6062 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.52968624,68.53959261999999,1 -149.530028,68.70383137,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 37</name>
+				<description>GPS Altitude: 6122 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.5209839,68.53957982,1 -149.52126099,68.70424954000001,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Area SA #13 - Lines 38-42</name>
+			<Placemark>
+				<name>Pass 38</name>
+				<description>GPS Altitude: 5777 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.60791731,68.53954533,1 -149.60884575,68.70367456,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 39</name>
+				<description>GPS Altitude: 5748 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.5992395,68.5395362,1 -149.60007903,68.7045097,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 40</name>
+				<description>GPS Altitude: 5734 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.59054133,68.53956284,1 -149.59132679,68.70441072,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 41</name>
+				<description>GPS Altitude: 5757 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.58183903,68.5395532,1 -149.582575,68.70260598,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 42</name>
+				<description>GPS Altitude: 5790 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.57313877,68.53956101,1 -149.57380162,68.70360141,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Area SA #14 - Lines 43-44</name>
+			<Placemark>
+				<name>Pass 43</name>
+				<description>GPS Altitude: 5879 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.62531771,68.53952563999999,1 -149.6263431,68.7029728,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 44</name>
+				<description>GPS Altitude: 5869 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.61661752,68.53953571,1 -149.61758662,68.70262394,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+		<Folder>
+			<name>Area SA #15 - Lines 45-51</name>
+			<Placemark>
+				<name>Pass 45</name>
+				<description>GPS Altitude: 5856 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.68617175,68.53946123999999,1 -149.68763948,68.70247607,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 46</name>
+				<description>GPS Altitude: 5892 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.67747168,68.53947445999999,1 -149.67891707,68.70365572,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 47</name>
+				<description>GPS Altitude: 5869 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.66877158,68.53948723000001,1 -149.67015202,68.70386621,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 48</name>
+				<description>GPS Altitude: 5816 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.66009594,68.53949916000001,1 -149.66137631,68.70357376,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 49</name>
+				<description>GPS Altitude: 5777 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.65139581,68.53951103,1 -149.65262298,68.70367544,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 50</name>
+				<description>GPS Altitude: 5823 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.64269357,68.53950454,1 -149.64386292,68.70309462,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+			<Placemark>
+				<name>Pass 51</name>
+				<description>GPS Altitude: 5872 ft</description>
+				<styleUrl>#Line</styleUrl>
+				<LineString>
+					<tessellate>1</tessellate>
+					<coordinates>
+						-149.63399551,68.53953342,1 -149.63511189,68.70446989,1 
+					</coordinates>
+				</LineString>
+			</Placemark>
+		</Folder>
+	</Folder>
+</Document>
+</kml>
