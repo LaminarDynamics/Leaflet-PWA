@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>scc_l.kml</name>
+	<Style id="inline">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<Style id="inline0">
+		<LineStyle>
+			<color>ff0000ff</color>
+			<width>2</width>
+		</LineStyle>
+		<PolyStyle>
+			<fill>0</fill>
+		</PolyStyle>
+	</Style>
+	<StyleMap id="inline1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#inline0</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#inline</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark>
+		<name>Path Measure</name>
+		<styleUrl>#inline1</styleUrl>
+		<LineString>
+			<tessellate>1</tessellate>
+			<coordinates>
+				-148.4741725032942,70.19880505607016,0 -148.4726949813128,70.19890073658527,0 -148.4713043586126,70.19901112732515,0 -148.4702975950851,70.19908962060305,0 -148.4689214355397,70.19919017883269,0 -148.4678277180278,70.19932754104512,0 -148.4666036209418,70.19944035467516,0 -148.4652708662275,70.19956051597346,0 -148.4641553928211,70.19966595803763,0 -148.4631413210078,70.1997517713851,0 -148.462083780106,70.19983757609761,0 -148.462395074442,70.20011484580657,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+</Document>
+</kml>
