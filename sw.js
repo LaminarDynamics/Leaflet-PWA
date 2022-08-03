@@ -23,10 +23,18 @@ let my_assets = [
     "my_scripts/prediction.js",
     "my_scripts/scalebar.js",
     // KMLs
-    "kmls/airport_road.kml",
+    // "kmls/airport_road.kml",
     "kmls/barrow.kml",
     "kmls/brooks1.kml",
-    "kmls/brooks2.kml"
+    "kmls/brooks2.kml",
+    // SCC Tests
+    "kmls/diagonal.kml",
+    "kmls/scc_l.kml",
+    "kmls/squiggle.kml",
+    "kmls/x1.kml",
+    "kmls/x2.kml",
+    "kmls/x3.kml",
+    "kmls/scc_n.kml"
 ];
 
 

@@ -8,6 +8,7 @@ let lines_data = [];
 
 function KmlsToArray(kml_files_to_textify) {    
     kml_files_to_textify.forEach(kml_file => {
+        // console.log("Loading: ", kml_file)
         ReadKmlFile(kml_file);  // Turn kml files to text
     });
 

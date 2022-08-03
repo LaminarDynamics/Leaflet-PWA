@@ -30,7 +30,21 @@ let vert_scaling = 100; // Feet total cdi height
 
 // Array of .kmls
 // let file_paths = ["kmls/sample.kml", "kmls/west.kml", "kmls/east.kml", "kmls/utah_walk.kml", "kmls/slc_line.kml", "kmls/airport_road.kml"];
-let file_paths = ["kmls/airport_road.kml", "kmls/brooks1.kml", "kmls/brooks2.kml", "kmls/barrow.kml"];
+// let file_paths = ["kmls/airport_road.kml", "kmls/brooks1.kml", "kmls/brooks2.kml", "kmls/barrow.kml"];
+let file_paths = [
+    // "kmls/airport_road.kml",
+    "kmls/brooks1.kml",
+    "kmls/brooks2.kml",
+    "kmls/barrow.kml",
+    "kmls/diagonal.kml",
+    "kmls/scc_l.kml",
+    "kmls/squiggle.kml",
+    "kmls/x1.kml",
+    "kmls/x2.kml",
+    "kmls/x3.kml",
+    "kmls/scc_n.kml"
+];  // SCC Tests
+
 
 
 let kml_lines = KmlsToArray(file_paths);
@@ -203,10 +217,10 @@ function TrackPos() {
 
         // X_track readout
         if (prediction.x_track < 0) {  // Right of center
-            $("#x_track").text(`<---  ${Math.round(prediction.x_track * 1000)}`)
+            // $("#x_track").text(`<---  ${Math.round(prediction.x_track * 1000)}`)
         }
         if (prediction.x_track > 0) {  // Left of center
-            $("#x_track").text(`${Math.round(prediction.x_track * 1000)}  --->`)
+            // $("#x_track").text(`${Math.round(prediction.x_track * 1000)}  --->`)
         }
     }
 }
